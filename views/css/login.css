@@ -1,6 +1,9 @@
 .login-page
 {
-  background-color:#e5e7ed
+  background-image: url('../images/830071fcbc092c4e8a14f4afc0994352.jpg');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
 }
 .login-page main
 {

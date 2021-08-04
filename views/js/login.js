@@ -18,3 +18,4 @@ document.getElementById('registerButton').addEventListener('click', async () => 
     console.log(result);
     
 })
+

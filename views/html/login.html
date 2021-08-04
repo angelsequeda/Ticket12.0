@@ -12,16 +12,22 @@
 
 
     <main>
-
-      <div class="login-block" style="background: none;">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#" style="opacity: 0.5;" id="startSession">Iniciar sesión</a>
+        </li>
+        <li class="nav-item active" >
+          <a class="nav-link active" aria-current="page" href="#" id="registerNewUser">Registrarse</a>
+        </li>
+      </ul>
+      <div class="login-block" >
         <h1>Registrar usuario</h1>
-
-        <form action="#" autocomplete="off">
+        <form action="#" autocomplete="off" id="formRegister">
 
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
-              <input type="text" class="form-control" placeholder="Primer nombre" id="firstname">
+              <input type="text" class="form-control" placeholder="Primer nombre" id="firstname" style="opacity: 1; color: black;">
             </div>
           </div>
           
@@ -87,6 +93,14 @@
               <input type="password" class="form-control" placeholder="Confirmar contraseña" id="secondpassword">
             </div>
           </div>
+          <hr class="hr-xs">
+
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+              <input type="text" class="form-control" placeholder="Código de empresa" id="companyCode" style="opacity: 1; color: black;">
+            </div>
+          </div>
           
           <hr class="hr-xs">
           <button class="btn btn-primary btn-block" type="button" id="registerButton">Registrar</button>
@@ -95,6 +109,22 @@
             <h6>Or register with</h6>
           </div>
 
+        </form>
+        <form action="#" autocomplete="off" id="formStart">
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+              <input type="text" class="form-control" placeholder="Nombre de usuario" id="usernameLogin" style="opacity: 1; color: black;">
+            </div>
+          </div>
+          <hr class="hr-xs">
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+              <input type="text" class="form-control" placeholder="Password" id="passwordLogin" style="opacity: 1; color: black;">
+            </div>
+          </div>
+          <hr class="hr-xs">
         </form>
       </div>
 
