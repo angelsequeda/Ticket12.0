@@ -1,4 +1,4 @@
-import {usersProcediments} from './index.js';
+import {frontValidations, usersProcediments} from './index.js';
 
 
 document.getElementById('registerButton').addEventListener('click', async () => {
@@ -12,10 +12,13 @@ document.getElementById('registerButton').addEventListener('click', async () => 
         pass_word:  document.getElementById('password').value,
         username:  document.getElementById('username').value
     }
-    console.log(newUser);
-    let result = await usersProcediments.registerUser(newUser);
+    
+    if (frontValidations.passwordValidationSimilar() && frontValidations.validationsRegisterfromFront(newUser) && document.getElementById("companyCode").value === 'TECLA2.0'){
+        
+        let result = await usersProcediments.registerUser(newUser);
+        alert(result);
 
-    console.log(result);
+    }
     
 })
 
@@ -27,6 +30,18 @@ document.getElementById('startButton').addEventListener('click', async ()=> {
         pass_word: document.getElementById('passwordLogin').value,
 
     }
-    let result =  await usersProcediments.searchForUser(userTrying);
-    console.log(result);
+    
+    if(frontValidations.validationsLoginfromFront(userTrying)) { 
+
+        let result =  await usersProcediments.searchForUser(userTrying);
+        if( typeof result === 'string') {
+
+            alert(result);
+        } else {
+
+            console.log(result);
+        }
+
+    }
+    
 })

@@ -10,16 +10,17 @@ module.exports.userRegister = async(newUser) => {
     }
 }
 
-module.exports.userLooked = async (username) => {
+module.exports.userLookedByUsername = async (username) => {
 
     try {
-        let userLookedFor = username;
+
         let userFound = await userModel.findAll({
             where: {
-                USERNAME: username
+                USERNAME: username,
+                ACTIVO: 1
             }
         })
-    return userFound;
+        return userFound;
     } catch (error) {
         console.log(error.message);
         throw new Error('ERROR DE BUSQUEDA');
@@ -27,4 +28,21 @@ module.exports.userLooked = async (username) => {
 
 }
 
+module.exports.userLookedByEmail = async(email) => {
+
+    try {
+        
+        let userFound = await(userModel.findAll({
+            where: {
+                MAIL: email,
+                ACTIVO: 1
+            }
+        }))
+        return userFound;
+
+    } catch (error) {
+        console.log(error.message);
+        throw new Error('ERROR DE BUSQUEDA');
+    }
+}
 
