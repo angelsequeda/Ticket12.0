@@ -19,9 +19,6 @@
         <li class="nav-item active" >
           <a class="nav-link active" type="button" aria-current="page" href="#" id="registerNewUser">Registrarse</a>
         </li>
-        <li class="nav-item active" >
-          <a class="nav-link active" type="button" aria-current="page" href="#" style="opacity: 0.5;" id="changePassword">Cambiar contraseña</a>
-        </li>
       </ul>
       <div id="completedivision" style="height: auto; width: auto;">
         <div class="login-block" id="firstdivision">
@@ -111,7 +108,47 @@
   
           </form>
         </div>
-        <div class="login-block" id="secondivision" >
+        <div id="thirddivision" style="opacity: 0;">
+          <div class="login-block" id="nothing" style="opacity: 1;" >
+            <h1 style="color: black;">Cambiar contraseña</h1>
+            <form action="#" autocomplete="off" id="formChanger">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+                  <input type="text" class="form-control" placeholder="Nombre de usuario" id="usernameChanger" style="opacity: 1; color: black;">
+                </div>
+              </div>
+              <hr class="hr-xs">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+                  <input type="text" class="form-control" placeholder="Password" id="passwordOld" style="opacity: 1; color: black;">
+                </div>
+              </div>
+              <hr class="hr-xs">
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+                  <input type="text" class="form-control" placeholder="Password" id="passwordNew" style="opacity: 1; color: black;">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+                  <input type="text" class="form-control" placeholder="Password" id="passwordNewConfirmation" style="opacity: 1; color: black;">
+                </div>
+              </div>
+              <hr class="hr-xs">
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" type="button" id="aceptButton">Aceptar</button>
+                <button class="btn btn-primary btn-block" type="button" id="cancelButton">Cancelar</button>
+              </div>
+              
+            </form>
+          </div>
+        </div>
+        
+        <div class="login-block" id="secondivision" style="opacity: 0;" >
           <h1 style="color: black;">Iniciar Sesión</h1>
           <form action="#" autocomplete="off" id="formStart">
             <div class="form-group">
@@ -128,10 +165,15 @@
               </div>
             </div>
             <hr class="hr-xs">
-            <button class="btn btn-primary btn-block" type="button" id="startButton">Entrar</button>
-  
+            <div class="form-group">
+              <button class="btn btn-primary btn-block" type="button" id="startButton">Entrar</button>
+              <button   class="btn btn-primary btn-block" type="button" id="changePassword"> Cambiar contraseña </button>
+            </div>
+            
           </form>
         </div>
+      </div>
+      </div>
       </div>
       
 
