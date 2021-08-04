@@ -19,3 +19,14 @@ document.getElementById('registerButton').addEventListener('click', async () => 
     
 })
 
+document.getElementById('startButton').addEventListener('click', async ()=> {
+
+    let userTrying = {
+
+        username: document.getElementById('usernameLogin').value,
+        pass_word: document.getElementById('passwordLogin').value,
+
+    }
+    let result =  await usersProcediments.searchForUser(userTrying);
+    console.log(result);
+})

@@ -1,8 +1,7 @@
 const userServices = require('../services/users.service');
 
 module.exports.findUser = async (req,res) => {
-    let userLookedFor = req.query.username;
-    console.log(userLookedFor);
+    let userLookedFor = req.body.username;
     try {
         let userFound = await userServices.userLooked(userLookedFor);
         return res.status(200).json(userFound);

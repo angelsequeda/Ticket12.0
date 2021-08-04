@@ -4,9 +4,18 @@
 export class usersProcediments {
 
     static async searchForUser(data) {
-        let result = await fetch('http://localhost:3000/users?username='+data.username, {
 
-            method:'GET'
+        let result = await fetch('http://localhost:3000/users/myuser', {
+            
+
+            method:'POST',
+
+            headers: {
+                "Accept": "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({username: data.username, pass_word:data.pass_word})
 
         });
 
@@ -17,7 +26,7 @@ export class usersProcediments {
 
     static async registerUser(data) {
 
-        let result = await fetch('http://localhost:3000/users', {
+        let result = await fetch('http://localhost:3000/users/newuser', {
             method: 'POST',
             headers: {
                 "Accept": "application/json, text/plain, */*",
