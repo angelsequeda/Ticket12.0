@@ -4,11 +4,12 @@ const cors = require('cors');
 const corsOption = require('./middlewares');
 const sequelize = require('./db/connection');
 require('dotenv').config();
+const userRoutes = require('./routes/users.routes')
 
 //Middlewares globales
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
-app.use(cors(corsOption));
+app.use(cors());
 
 
 //Inicio de servidor
@@ -23,3 +24,4 @@ app.listen(process.env.port, async ()=> {
     
 })
 
+userRoutes(app);

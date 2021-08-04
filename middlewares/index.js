@@ -4,7 +4,7 @@ const corsOption = {
 
     origin: function (origin,callback) {
 
-        if (process.env.LISTA_BLANCA.indexOf(origin) !== -1) {
+        if (process.env.whitelistdirections.indexOf(origin) !== -1) {
 
             callback (null,true);
 
