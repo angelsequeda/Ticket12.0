@@ -25,3 +25,9 @@ document.getElementById('registerNewUser').addEventListener('click', () => {
 document.getElementById('changePassword').addEventListener('click' , ()=> {
     document.getElementById('completedivision').innerHTML = document.getElementById('thirddivision').innerHTML
 })*/
+
+jQuery(document).ready(function($){
+    $("#startSession").click(function() {
+        console.log('todo bien');
+    })
+})
