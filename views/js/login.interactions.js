@@ -33,21 +33,21 @@ $(document).ready(function() {
 
     $("#startSession").click(function() {
 
-        $(".logindivision").fadeIn();
-        $(".registerdivision").fadeOut();
-        $(".changerdivision").fadeOut();
+        $(".logindivision").fadeIn("slow");
+        $(".registerdivision").hide();
+        $(".changerdivision").hide();
     })
     $("#registerUser").click(function() {
 
-        $(".registerdivision").fadeIn();
-        $(".logindivision").fadeOut();
-        $(".changerdivision").fadeOut();
+        $(".registerdivision").fadeIn("slow");
+        $(".logindivision").hide();
+        $(".changerdivision").hide();
     })
     $("#passwordChange").click( function() {
 
-        $(".registerdivision").fadeOut();
-        $(".logindivision").fadeOut();
-        $(".changerdivision").fadeIn();
+        $(".registerdivision").hide();
+        $(".logindivision").hide();
+        $(".changerdivision").fadeIn("slow");
 
     })
 })
