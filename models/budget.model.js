@@ -36,7 +36,7 @@ budgetModel.init( {
     modelName: 'Budget',
     tableName: 'INDEXPRESUPUESTOS',
     timestamps: false,
-    createdAt: true,
+    createdAt: false,
     updatedAt: false
 })
 
