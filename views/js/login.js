@@ -15,15 +15,19 @@ document.getElementById('registerButton').addEventListener('click', async () => 
 
     if(frontValidations.validationsRegisterfromFront(newUser)) {
 
-        if(!frontValidations.passwordValidationSimilar()) {
+        if(frontValidations.passwordValidationSimilar()) {
 
             let result = await usersProcediments.registerUser(newUser);
             if(typeof result === "string") {
                 alert(result);
             } else {
-                console.log(result);
+                log(result);
             }
+        }else {
+            alert('Las contraseñas no coinciden');
         }
+    }else {
+        alert('Faltan campos por llenar');
     }
     
 })

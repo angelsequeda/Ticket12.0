@@ -54,16 +54,16 @@ export class usersProcediments {
 
 export class frontValidations {
 
-    static async passwordValidationSimilar() {
+    static  passwordValidationSimilar() {
 
         let password = document.getElementById('password').value;
         let passwordComprobation = document.getElementById('secondpassword').value;
         if( password === passwordComprobation) {
 
             return true;
+
         } else {
 
-            alert('Las contraseñas no coinciden');
             return false;
         }
 
@@ -72,7 +72,7 @@ export class frontValidations {
     static  validationsRegisterfromFront(data) {
         if(!data.nombre1 || !data.apellido1 || !data.apellido2 || !data.username || !data.pass_word || !data.mail) {
             
-            alert('Faltan campos por llenar');
+
             return false;
 
         }else {
