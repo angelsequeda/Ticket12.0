@@ -1,7 +1,7 @@
 import {frontValidations, usersProcediments} from './index.js';
 
 
-/*document.getElementById('registerButton').addEventListener('click', async () => {
+document.getElementById('registerButton').addEventListener('click', async () => {
 
     let newUser = {
         nombre1: document.getElementById('firstname').value,
@@ -13,14 +13,14 @@ import {frontValidations, usersProcediments} from './index.js';
         username:  document.getElementById('username').value
     }
     
-    if (frontValidations.passwordValidationSimilar() && frontValidations.validationsRegisterfromFront(newUser) && document.getElementById("companyCode").value === 'TECLA2.0'){
+    if (frontValidations.passwordValidationSimilar() && frontValidations.validationsRegisterfromFront(newUser) ){
         
         let result = await usersProcediments.registerUser(newUser);
         alert(result);
 
     }
     
-})*/
+})
 
 document.getElementById('startButton').addEventListener('click', async ()=> {
 
