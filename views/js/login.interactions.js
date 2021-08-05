@@ -1,5 +1,5 @@
 
-
+/*
 document.getElementById('startSession').addEventListener('click', () => {
 
     document.getElementById('secondivision').setAttribute('style','opacity: 1');
@@ -24,4 +24,4 @@ document.getElementById('registerNewUser').addEventListener('click', () => {
 
 document.getElementById('changePassword').addEventListener('click' , ()=> {
     document.getElementById('completedivision').innerHTML = document.getElementById('thirddivision').innerHTML
-})
+})*/

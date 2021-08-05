@@ -1,7 +1,7 @@
 import {frontValidations, usersProcediments} from './index.js';
 
 
-document.getElementById('registerButton').addEventListener('click', async () => {
+/*document.getElementById('registerButton').addEventListener('click', async () => {
 
     let newUser = {
         nombre1: document.getElementById('firstname').value,
@@ -20,7 +20,7 @@ document.getElementById('registerButton').addEventListener('click', async () => 
 
     }
     
-})
+})*/
 
 document.getElementById('startButton').addEventListener('click', async ()=> {
 
