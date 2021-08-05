@@ -4,7 +4,8 @@ const cors = require('cors');
 const corsOption = require('./middlewares');
 const sequelize = require('./db/connection');
 require('dotenv').config();
-const userRoutes = require('./routes/users.routes')
+const userRoutes = require('./routes/users.routes');
+const { budgetRoutes } = require('./routes/budget.routes');
 
 //Middlewares globales
 app.use(express.json());
@@ -17,7 +18,8 @@ app.use(cors());
 app.listen(process.env.port, async ()=> {
     try {
         console.log('STATUS CORRECTO [SERVIDOR]');
-        await sequelize.authenticate() 
+        await sequelize.authenticate();
+        
     } catch (error) {
         console.log(error.message);
     }
@@ -25,3 +27,4 @@ app.listen(process.env.port, async ()=> {
 })
 
 userRoutes(app);
+budgetRoutes(app);

@@ -16,7 +16,7 @@ document.getElementById('registerButton').addEventListener('click', async () => 
 
     if(frontValidations.validationsRegisterfromFront(newUser)) {
 
-        if(frontValidations.passwordValidationSimilar()) {
+        if(frontValidations.passwordValidationSimilar(document.getElementById('password').value,document.getElementById('secondpassword').value)) {
 
             let result = await newUser.registerUser();
             if(typeof result === "string") {
@@ -61,18 +61,32 @@ document.getElementById('startButton').addEventListener('click', async ()=> {
 
 document.getElementById('changerButton').addEventListener('click', async() => {
 
-    let newChange = {username: document.getElementById('usernameChanger').value,
+    let newChange =new User( {username: document.getElementById('usernameChanger').value,
         pass_word: document.getElementById('passwordChanger').value,
-        newpass_word: document.getElementById('newpass_word').value
-    };
+    });
 
-    try {
+    let newpass_word =  document.getElementById('newpass_word').value;
+    if(frontValidations.passwordValidationSimilar(newChange.pass_word,newChange.newpass_word)){
+        alert('La contraseña nueva y la antigua no pueden ser iguales');
+    } else {
+
+        try {
         
-        let result = await usersProcediments.changePassword(newChange);
-        alert(result);
-    } catch (error) {
-        alert(error.message);
+            let result = await newChange.changePassword(newpass_word);
+            alert(result);
+            document.getElementById('usernameChanger').value ="";
+            document.getElementById('passwordChanger').value ="";
+            document.getElementById('newpass_word').value ="";
+        } catch (error) {
+            alert(error.message);
+        }
     }
+    
           
 })
 
+document.getElementById('cancelButton').addEventListener('click', ()=> {
+    document.getElementById('usernameChanger').value ="";
+    document.getElementById('passwordChanger').value ="";
+    document.getElementById('newpass_word').value ="";
+})

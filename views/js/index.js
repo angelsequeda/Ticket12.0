@@ -1,10 +1,9 @@
 
 export class frontValidations {
 
-    static  passwordValidationSimilar() {
+    static  passwordValidationSimilar(password,passwordComprobation) {
 
-        let password = document.getElementById('password').value;
-        let passwordComprobation = document.getElementById('secondpassword').value;
+        
         if( password === passwordComprobation) {
 
             return true;
@@ -43,5 +42,29 @@ export class frontValidations {
 
         }
 
+    }
+
+    
+}
+
+export class Renderizer {
+
+    constructor() {
+
+        this.button = document.createElement('button');
+    }
+
+    static async renderIndex(data) {
+        let table = document.getElementById('bodyindex');
+        data.forEach(element1 => {
+            let file = document.createElement('tr');
+            let listProperties = Object.keys(element1);
+            listProperties.forEach(element2 => {
+                let newcolumn = document.createElement('td');
+                newcolumn.textContent = element1[element2];
+                file.appendChild(newcolumn);
+            });
+            table.appendChild(file);
+        });
     }
 }
