@@ -1,27 +1,33 @@
+$(document).ready(function() {
 
+    $(".registerdivision").hide();
+    $(".changerdivision").hide();
 
-document.getElementById('startSession').addEventListener('click', () => {
+    $("#startSession").click(function() {
 
-    document.getElementById('secondivision').setAttribute('style','opacity: 1');
-    document.getElementById('firstdivision').setAttribute('style','opacity:0');
-    document.getElementById('completedivision').setAttribute('style','display: flex; flex-direction: column-reverse');
-    document.getElementById('startSession').setAttribute('style','opacity:1');
-    document.getElementById('registerNewUser').setAttribute('style','opacity:0.5');
+        $(".logindivision").fadeIn("slow");
+        $(".registerdivision").hide();
+        $(".changerdivision").hide();
+        $('#startSession').addClass('active');
+        $("#passwordChange").removeClass('active');
+        $("#registerUser").removeClass('active');
+    })
+    $("#registerUser").click(function() {
 
+        $(".registerdivision").fadeIn("slow");
+        $(".logindivision").hide();
+        $(".changerdivision").hide();
+        $('#startSession').removeClass('active');
+        $("#passwordChange").removeClass('active');
+        $("#registerUser").addClass('active');
+    })
+    $("#passwordChange").click( function() {
 
-})
-
-
-document.getElementById('registerNewUser').addEventListener('click', () => {
-
-    document.getElementById('secondivision').setAttribute('style','opacity: 0');
-    document.getElementById('firstdivision').setAttribute('style','opacity:1');
-    document.getElementById('completedivision').setAttribute('style','display: flex; flex-direction: column');
-    document.getElementById('startSession').setAttribute('style','opacity:0.5');
-    document.getElementById('registerNewUser').setAttribute('style','opacity:1');
-})
-
-
-document.getElementById('changePassword').addEventListener('click' , ()=> {
-    document.getElementById('completedivision').innerHTML = document.getElementById('thirddivision').innerHTML
+        $(".registerdivision").hide();
+        $(".logindivision").hide();
+        $(".changerdivision").fadeIn("slow");
+        $('#startSession').removeClass('active');
+        $("#passwordChange").addClass('active');
+        $("#registerUser").removeClass('active');
+    })
 })

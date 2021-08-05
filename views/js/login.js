@@ -1,9 +1,10 @@
-import {frontValidations, usersProcediments} from './index.js';
+import { User } from './classes.js';
+import {frontValidations} from './index.js';
 
 
 document.getElementById('registerButton').addEventListener('click', async () => {
 
-    let newUser = {
+    let newUser = new User({
         nombre1: document.getElementById('firstname').value,
         nombre2:  document.getElementById('secondname').value,
         apellido1:  document.getElementById('firstlastname').value,
@@ -11,32 +12,43 @@ document.getElementById('registerButton').addEventListener('click', async () => 
         mail:  document.getElementById('mail').value,
         pass_word:  document.getElementById('password').value,
         username:  document.getElementById('username').value
-    }
-    
-    if (frontValidations.passwordValidationSimilar() && frontValidations.validationsRegisterfromFront(newUser) && document.getElementById("companyCode").value === 'TECLA2.0'){
-        
-        let result = await usersProcediments.registerUser(newUser);
-        alert(result);
+    });
 
+    if(frontValidations.validationsRegisterfromFront(newUser)) {
+
+        if(frontValidations.passwordValidationSimilar()) {
+
+            let result = await newUser.registerUser();
+            if(typeof result === "string") {
+                alert(result);
+            } else {
+                log(result);
+            }
+        }else {
+            alert('Las contraseñas no coinciden');
+        }
+    }else {
+        alert('Faltan campos por llenar');
     }
     
 })
 
 document.getElementById('startButton').addEventListener('click', async ()=> {
 
-    let userTrying = {
+    let userTrying = new User({
 
         username: document.getElementById('usernameLogin').value,
         pass_word: document.getElementById('passwordLogin').value,
 
-    }
+    });
     
     if(frontValidations.validationsLoginfromFront(userTrying)) { 
-
-        let result =  await usersProcediments.searchForUser(userTrying);
+        userTrying.startSession();
+        let result =  await userTrying.searchForUser();
         if( typeof result === 'string') {
 
             alert(result);
+
         } else {
 
             console.log(result);
@@ -45,3 +57,22 @@ document.getElementById('startButton').addEventListener('click', async ()=> {
     }
     
 })
+
+
+document.getElementById('changerButton').addEventListener('click', async() => {
+
+    let newChange = {username: document.getElementById('usernameChanger').value,
+        pass_word: document.getElementById('passwordChanger').value,
+        newpass_word: document.getElementById('newpass_word').value
+    };
+
+    try {
+        
+        let result = await usersProcediments.changePassword(newChange);
+        alert(result);
+    } catch (error) {
+        alert(error.message);
+    }
+          
+})
+

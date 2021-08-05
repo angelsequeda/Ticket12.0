@@ -23,3 +23,25 @@ module.exports.createUser = async (req,res) => {
         return res.status(400).json(error.message);
     }
 }
+
+module.exports.userChanger = async(req,res) => {
+
+    try {
+        await userServices.changepassword(req.body.username,req.body.newpass_word);
+        return res.status(200).json('Contraseña cambiada con éxito');
+    } catch (error) {
+        return res.status(400).json(error.message);
+    }
+}
+
+
+module.exports.startSeesionJWT = async(req,res)=> {
+    try {
+        let user = req.body;
+        userServices.asignJWT(user);
+        console.log(user);
+        return res.status(200).json(user);
+    } catch (error) {
+        return res.status(400).json('Error con los tokens');
+    }
+}
