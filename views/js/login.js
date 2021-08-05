@@ -1,5 +1,5 @@
 import { User } from './classes.js';
-import {frontValidations, usersProcediments} from './index.js';
+import {frontValidations} from './index.js';
 
 
 document.getElementById('registerButton').addEventListener('click', async () => {
@@ -43,11 +43,12 @@ document.getElementById('startButton').addEventListener('click', async ()=> {
     });
     
     if(frontValidations.validationsLoginfromFront(userTrying)) { 
-
+        userTrying.startSession();
         let result =  await userTrying.searchForUser();
         if( typeof result === 'string') {
 
             alert(result);
+
         } else {
 
             console.log(result);

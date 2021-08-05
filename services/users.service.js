@@ -1,5 +1,6 @@
 const userModel = require("../models/user.model");
-
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 module.exports.userRegister = async(newUser) => {
     try {
@@ -58,4 +59,12 @@ module.exports.changepassword = async (username,newpass_word) => {
         console.log(error);
         throw new Error('ERROR DE CAMBIO DE CONTRASEÑA');
     }
+}
+
+
+module.exports.asignJWT = (user) => {
+
+    let token = jwt.sign({username: user.username},process.env.tokensignature);
+    user.token = token;
+    console.log(jwt.decode(user.token));
 }

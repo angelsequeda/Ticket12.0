@@ -73,6 +73,11 @@ export class User {
         let resultjson = result.json();
         return resultjson;
     }
+
+    async startSession() {
+        let result = await this.searchForUser();
+        console.log(result);
+    }
 }
 
 
