@@ -63,7 +63,7 @@ document.getElementById('changerButton').addEventListener('click', async() => {
         pass_word: document.getElementById('passwordChanger').value,
         newpass_word: document.getElementById('newpass_word').value
     };
-    console.log(newChange);
+
     try {
         
         let result = await usersProcediments.changePassword(newChange);
