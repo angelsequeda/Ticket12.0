@@ -102,5 +102,15 @@ const doesUserandPasswordExistLogin = async(req,res,next) => {
     }
 }
 
+const doesNewPasswordPass = async(req,res,next) => {
 
-module.exports = {validationDataRegister,validationDataLogin,doesUserExist,doesMailExist,doesUserandPasswordExistLogin}
+    try {
+        Joi.assert({newpass_word: req.body.newpass_word},usersSchemas.passwordSchema);
+        return next();
+    } catch (error) {
+        console.log(error.message);
+        return res.status(400).json(error.message);
+    }
+}
+
+module.exports = {validationDataRegister,validationDataLogin,doesUserExist,doesMailExist,doesUserandPasswordExistLogin,doesNewPasswordPass}

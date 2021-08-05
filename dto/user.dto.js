@@ -22,4 +22,8 @@ let userSchemaForLogin = Joi.object({
 
 });
 
-module.exports = {userSchemaForLogin,userSchemaJoiForRegister};
+let passwordSchema = Joi.object({
+    newpass_word: Joi.string().pattern(new RegExp("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,15}$")).message('La contraseña debe contener al menos una mayúscula, una minúscula y un dígito'),
+})
+
+module.exports = {userSchemaForLogin,userSchemaJoiForRegister,passwordSchema};

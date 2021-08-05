@@ -55,3 +55,21 @@ document.getElementById('startButton').addEventListener('click', async ()=> {
     }
     
 })
+
+
+document.getElementById('changerButton').addEventListener('click', async() => {
+
+    let newChange = {username: document.getElementById('usernameChanger').value,
+        pass_word: document.getElementById('passwordChanger').value,
+        newpass_word: document.getElementById('newpass_word').value
+    };
+    console.log(newChange);
+    try {
+        
+        let result = await usersProcediments.changePassword(newChange);
+        alert(result);
+    } catch (error) {
+        alert(error.message);
+    }
+          
+})

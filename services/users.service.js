@@ -46,3 +46,16 @@ module.exports.userLookedByEmail = async(email) => {
     }
 }
 
+module.exports.changepassword = async (username,newpass_word) => {
+
+    try {
+        let result = await userModel.update({pass_word:newpass_word},
+            {
+                where: {username: username}
+            })
+        
+    } catch (error) {
+        console.log(error);
+        throw new Error('ERROR DE CAMBIO DE CONTRASEÑA');
+    }
+}

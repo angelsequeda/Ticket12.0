@@ -49,6 +49,24 @@ export class usersProcediments {
         let resultJSON = result.json();
         return resultJSON;
     }
+
+    static async changePassword(data) {
+        let result = await fetch('http://localhost:3000/users/changepass', {
+            method: 'POST',
+            headers: {
+                "Accept": "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify({
+
+                username: data.username,
+                pass_word: data.pass_word,
+                newpass_word : data.newpass_word
+            })
+        })
+        let resultjson = result.json();
+        return resultjson;
+    }
 }
 
 
