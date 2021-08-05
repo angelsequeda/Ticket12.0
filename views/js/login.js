@@ -12,12 +12,18 @@ document.getElementById('registerButton').addEventListener('click', async () => 
         pass_word:  document.getElementById('password').value,
         username:  document.getElementById('username').value
     }
-    
-    if (frontValidations.passwordValidationSimilar() && frontValidations.validationsRegisterfromFront(newUser) ){
-        
-        let result = await usersProcediments.registerUser(newUser);
-        alert(result);
 
+    if(frontValidations.validationsRegisterfromFront(newUser)) {
+
+        if(!frontValidations.passwordValidationSimilar()) {
+
+            let result = await usersProcediments.registerUser(newUser);
+            if(typeof result === "string") {
+                alert(result);
+            } else {
+                console.log(result);
+            }
+        }
     }
     
 })
