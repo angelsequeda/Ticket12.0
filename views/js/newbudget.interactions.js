@@ -54,12 +54,14 @@ document.getElementById('addmonthbutton').addEventListener('click', ()=> {
     }
 
     if (rowsinEarnings >0) {
+        document.getElementById("Totalearningscolumnhead").remove();
         for(let i=1; i<=rowsinEarnings; i++) {
             document.getElementById(`deleteearningrowcont${i}`).remove();
             document.getElementById(`rowearnings${i}`).innerHTML+=`<td><input type ="text" id="earningtotalearnings${i}${num}" placeholder= "Total del mes" ></td><td id="deleteearningrowcont${i}"><input type ="checkbox" id="deleteearningrow${i}"></td>`
 
         }
         document.getElementById("earningstotalearnings").innerHTML+=`<td><input type="text" id = "totalmonthearning${num}" disabled></td>`;
+        document.getElementById('earningsthead').innerHTML+=`<th scope="col" class="column" id="Totalearningscolumnhead" > TOTAL</th>`
     }
 
     if (rowsinDirectcost > 0) {
@@ -94,19 +96,20 @@ document.getElementById('buttonearningsadd').addEventListener('click', ()=> {
     document.getElementById('earningstbody').innerHTML+=`<tr id= "rowearnings${rowsinEarnings}"></tr>`;
     document.getElementById(`rowearnings${rowsinEarnings}`).innerHTML+=`<td><input type ="text" id="earningconceptearnings${rowsinEarnings}" placeholder= "Concepto"></td>`;
     if(num<2) {
-        document.getElementById(`rowearnings${rowsinEarnings}`).innerHTML+=`<td><input type ="text" id="earningtotalearnings${rowsinEarnings}1" placeholder= "Total del mes"></td><td id= "deleteearningrowcont${rowsinEarnings}"><input type ="checkbox" id="deleteearningrow1"></td>`;
+        document.getElementById(`rowearnings${rowsinEarnings}`).innerHTML+=`<td><input type ="text" id="earningtotalearnings${rowsinEarnings}1" placeholder= "Total del mes"></td><td id= "deleteearningrowcont${rowsinEarnings}"><input type ="checkbox" id="deleteearningrow1"></td><td id="totalearningsperconcept${rowsinEarnings}"><input type="text" id="totalearningperconceptinput${rowsinEarnings}" disabled></td>`;
     }else {
         for (let i=1 ;i<=num; i++) {
-            document.getElementById(`rowearnings${rowsinEarnings}`).innerHTML+=`<td><input type ="text" id="earningtotalearnings${rowsinEarnings}${i}" placeholder= "Total del mes"></td>`;
+            document.getElementById(`rowearnings${rowsinEarnings}`).innerHTML+=`<td><input type ="text" id="earningtotalearnings${rowsinEarnings}${i}" placeholder= "Total del mes"></td></td>`;
         }
-        document.getElementById(`rowearnings${rowsinEarnings}`).innerHTML+=`<td id="deleteearningrowcont${rowsinEarnings}"><input type ="checkbox" id="deleteearningrow${rowsinEarnings}"></td>`;
+        document.getElementById(`rowearnings${rowsinEarnings}`).innerHTML+=`<td id="deleteearningrowcont${rowsinEarnings}"><input type ="checkbox" id="deleteearningrow${rowsinEarnings}"></td><td id="totalearningsperconcept${rowsinEarnings}"><input type="text" id="totalearningperconceptinput${rowsinEarnings}" disabled></td>`;
     }
     document.getElementById("earningstbody").innerHTML+=`<tr id="earningstotalearnings">
     <td>TOTAL</td>
     </tr>`;
     for (let index = 1; index <= num; index++) {
         document.getElementById("earningstotalearnings").innerHTML+=`<td><input type="text" id = "totalmonthearning${index}" disabled ></td>`;
-    }
+    };
+    
 })
 
 document.getElementById('buttondirectcostadd').addEventListener('click', ()=> {
