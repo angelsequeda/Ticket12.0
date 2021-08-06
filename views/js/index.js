@@ -93,3 +93,27 @@ export class Renderizer {
         });
     }
 }
+
+
+export class renderTablesBudget {
+
+
+    static cashflowrows() {
+
+        let info = ['Ingresos','Egresos','Total'];
+        info.forEach(element => {
+            let newfile = document.createElement('tr');
+            newfile.id = element;
+            newfile.textContent = element;
+            document.getElementById("flowcashtbody").appendChild(newfile);
+        });
+
+    }
+
+    static cashflowcolumns(data,num) {
+        document.getElementById('cashflowrowthead').innerHTML+=`<th id='${data}monthrow'>${data}</th>`;
+        document.getElementById('Ingresos').innerHTML+=`<th><input type='text' id=earningsinputcashflow${num}></th>`;
+        document.getElementById('Egresos').innerHTML+=`<th><input type='text' id=costinputcashflow${num} disabled></th>`;
+        document.getElementById('Total').innerHTML+=`<th><input type='text' id=totalinputcashflow${num} disabled></th>`;
+    }
+}

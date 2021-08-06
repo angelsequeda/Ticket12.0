@@ -5,11 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/newbudget.css">
     <title>Document</title>
 </head>
-<body>
-    <script src="../css/bootstrap/js/bootstrap.min.js"></script>
-    <h2>Flujo de efectivo</h2>
+<body class="container">
+    <select name="monthselect" id="monthselect" >
+        <option value="" selected disabled>Mes de inicio</option>
+        <option value="Febrero">Enero</option>
+        <option value="Marzo">Febrero</option>
+        <option value="Abril">Marzo</option>
+        <option value="Mayo">Abril</option>
+        <option value="Junio">Mayo</option>
+        <option value="Julio">Junio</option>
+        <option value="Agosto">Julio</option>
+        <option value="Septiembre">Agosto</option>
+        <option value="Octubre">Septiembre</option>
+        <option value="Noviembre">Octubre</option>
+        <option value="Diciembre">Noviembre</option>
+        <option value="Enero">Diciembre</option>
+    </select>
+    <div class="cashflowcontainer">
+        <h2>Flujo de efectivo</h2>
+        <table class="table" id="cashflowtable">
+            <thead class="thead-dark">
+                <tr id="cashflowrowthead">
+                <th scope="col" class="column" id="conceptcolumn" hidden>Concepto</th>
+                </tr>
+            </thead>
+            <tbody class="tbody" id="flowcashtbody">
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" id="addmonthbutton">Nuevo mes</button>
+    </div>
     
+    <script src="../css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/newbudget.interactions.js" type="module"></script>
 </body>
 </html>
