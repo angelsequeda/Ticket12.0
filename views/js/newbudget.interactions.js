@@ -70,7 +70,9 @@ document.getElementById('addmonthbutton').addEventListener('click', ()=> {
         for(let i=1; i<=rowsinDirectcost; i++) {
             document.getElementById(`totaldirectcostperconcept${i}`).remove();
             document.getElementById(`deletedirectcostrowcont${i}`).remove();
-            document.getElementById(`rowdirectcost${i}`).innerHTML+=`<td><input type ="text" id="directcosttotaldirectcost${i}${num}" placeholder= "Total del mes" ></td><td id="totaldirectcostperconcept${i}"><input type="text" id="totaldirectcostperconceptinput${i}" disabled></td><td id="deletedirectcostrowcont${i}"><input type ="checkbox" id="deletedirectcostrow${i}"></td>`;
+            document.getElementById(`rowdirectcost${i}`).innerHTML+=`<td id="buttoncontainerdirectcost${i}${num}"><input type ="text" id="directcosttotaldirectcost${i}${num}" placeholder= "Total del mes" disabled></td><td id="totaldirectcostperconcept${i}"><input type="text" id="totaldirectcostperconceptinput${i}" disabled></td><td id="deletedirectcostrowcont${i}"><input type ="checkbox" id="deletedirectcostrow${i}"></td>`;
+            renderTablesBudget.createbuttons(`buttoncontainerdirectcost${i}${num}`);
+            renderTablesBudget.buttonsabilitate(`butttonFreeeditbuttoncontainerdirectcost${i}${num}`,`directcosttotaldirectcost${i}${num}`);
 
         }
         document.getElementById("directcosttotaldirectcost").innerHTML+=`<td><input type="text" id = "totalmonthdirectcost${num}" disabled></td>`;
@@ -128,12 +130,16 @@ document.getElementById('buttondirectcostadd').addEventListener('click', ()=> {
 
     if(num<2 && rowsinDirectcost<=1) {
 
-        document.getElementById(`rowdirectcost${rowsinDirectcost}`).innerHTML+=`<td><input type ="text" id="costtotaldirectcost${rowsinDirectcost}1" placeholder= "Total del mes"></td><td id="totaldirectcostperconcept${rowsinDirectcost}"><input type="text" id="totaldirectcostperconceptinput${rowsinDirectcost}" disabled></td><td id= "deletedirectcostrowcont${rowsinDirectcost}"><input type ="checkbox" id="deletedirectcostrow1"></td>`;
-        document.getElementById('directcosthead').innerHTML+=`<th scope="col" class="column" id="Totaldirectcostcolumnhead" >TOTAL</th>`
+        document.getElementById(`rowdirectcost${rowsinDirectcost}`).innerHTML+=`<td id="buttoncontainerdirectcost${rowsinDirectcost}1"><input type ="text" id="directcosttotaldirectcost${rowsinDirectcost}1" placeholder= "Total del mes" disabled></td><td id="totaldirectcostperconcept${rowsinDirectcost}"><input type="text" id="totaldirectcostperconceptinput${rowsinDirectcost}1" disabled></td><td id= "deletedirectcostrowcont${rowsinDirectcost}"><input type ="checkbox" id="deletedirectcostrow1"></td>`;
+        document.getElementById('directcosthead').innerHTML+=`<th scope="col" class="column" id="Totaldirectcostcolumnhead" >TOTAL</th>`;
+        renderTablesBudget.createbuttons(`buttoncontainerdirectcost${rowsinDirectcost}1`);
+        renderTablesBudget.buttonsabilitate(`butttonFreeeditbuttoncontainerdirectcost${rowsinDirectcost}1`,`directcosttotaldirectcost${rowsinDirectcost}1`);
 
     }else {
         for (let i=1 ;i<=num; i++) {
-            document.getElementById(`rowdirectcost${rowsinDirectcost}`).innerHTML+=`<td><input type ="text" id="costtotaldirectcost${rowsinDirectcost}${i}" placeholder= "Total del mes"></td>`;
+            document.getElementById(`rowdirectcost${rowsinDirectcost}`).innerHTML+=`<td id="buttoncontainerdirectcost${rowsinDirectcost}${i}"><input type ="text" id="directcosttotaldirectcost${rowsinDirectcost}${i}" placeholder= "${rowsinDirectcost}${i}" disabled></td>`;
+            renderTablesBudget.createbuttons(`buttoncontainerdirectcost${rowsinDirectcost}${i}`);
+            renderTablesBudget.buttonsabilitate(`butttonFreeeditbuttoncontainerdirectcost${rowsinDirectcost}${i}`,`directcosttotaldirectcost${rowsinDirectcost}${i}`);
         }
         document.getElementById(`rowdirectcost${rowsinDirectcost}`).innerHTML+=`<td id="totaldirectcostperconcept${rowsinDirectcost}"><input type="text" id="totaldirectcostperconceptinput${rowsinDirectcost}" disabled></td><td id="deletedirectcostrowcont${rowsinDirectcost}"><input type ="checkbox" id="deletedirectcostrow${rowsinDirectcost}"></td>`;
     }

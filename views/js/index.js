@@ -122,4 +122,25 @@ export class renderTablesBudget {
         document.getElementById('resourcesthead').innerHTML+=`<th id='${data}monthrowresources${num}'>${data}</th>`;
     }
 
+    static createbuttons(name) {
+        
+        console.log(name);
+        let butttonFreeedit = `<button type= "button" style="margin=left:1px" class= "btn btn-primary" id="butttonFreeedit${name}">Edit</button>`;
+        let buttonSumatory = `<button type= "button" style="margin=left:1px" class= "btn btn-primary" id="buttonSumatory${name}">Sumar</button>`;
+        let buttonPercent = `<button type= "button" class= "btn btn-primary" id="buttonPercent${name}">%</button>`
+        
+        document.getElementById(name).innerHTML+=butttonFreeedit+buttonSumatory+buttonPercent;
+
+    }
+
+    static buttonsabilitate(name,abilitate) {
+        console.log(name);
+        console.log(abilitate);
+        document.getElementById(name).addEventListener('click' ,()=> {
+            console.log('bien');
+            document.getElementById(abilitate).disabled = false;
+        });
+
+    }
+
 }
