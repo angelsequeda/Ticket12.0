@@ -111,12 +111,15 @@ export class renderTablesBudget {
     }
 
     static cashflowcolumns(data,num) {
-        document.getElementById('cashflowrowthead').innerHTML+=`<th id='${data}monthrow${num}'>${data}</th>`;
+        document.getElementById('cashflowrowthead').innerHTML+=`<th id='${data}monthrowcashflow${num}'>${data}</th>`;
         document.getElementById('Ingresos').innerHTML+=`<td><input type='text' id=earningsinputcashflow${num}></td>`;
         document.getElementById('Egresos').innerHTML+=`<td><input type='text' id=costinputcashflow${num} disabled></td>`;
         document.getElementById('Total').innerHTML+=`<td><input type='text' id=totalinputcashflow${num} disabled></td>`;
         document.getElementById('Acumulado').innerHTML+=`<td><input type='text' id=acumuladoinputcashflow${num} disabled></td>`;
-        document.getElementById('earningsthead').innerHTML+=`<th id='${data}monthrow${num}'>${data}</th>`;
+        document.getElementById('earningsthead').innerHTML+=`<th id='${data}monthrowearnings${num}'>${data}</th>`;
+        document.getElementById('directcosthead').innerHTML+=`<th id='${data}monthrowdirectcost${num}'>${data}</th>`;
+        document.getElementById('admincosthead').innerHTML+=`<th id='${data}monthrowadmincost${num}'>${data}</th>`;
+        document.getElementById('resourcesthead').innerHTML+=`<th id='${data}monthrowresources${num}'>${data}</th>`;
     }
 
 }

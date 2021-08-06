@@ -24,6 +24,7 @@
         <option value="Diciembre">Noviembre</option>
         <option value="Enero">Diciembre</option>
     </select>
+    <!--CASH FLOW-->
     <div class="cashflowcontainer">
         <h2>Flujo de efectivo</h2>
         <table class="table" id="cashflowtable">
@@ -37,6 +38,7 @@
         </table>
         <button type="button" class="btn btn-primary" id="addmonthbutton">Nuevo mes</button>
     </div>
+    <!--EARNINGS-->
     <div class="earningscontainer">
         <h2>Ingresos</h2>
         <table class="table" id="earningstable">
@@ -46,9 +48,52 @@
                 </tr>
             </thead>
             <tbody class="tbody" id="earningstbody">
+                <tr id="earningstotalearnings" hidden><td>Total</td></tr>
             </tbody>
         </table>
         <button type="button" class="btn btn-primary" id="buttonearningsadd" hidden>+</button>
+    </div>
+    <!--COST DIRECT-->
+    <div class="directcostcontainer">
+        <h2>Costos directos</h2>
+        <table class="table" id="directcosttable">
+            <thead class="thead-dark">
+                <tr id="directcosthead">
+                <th scope="col" class="column" id="conceptcolumndirectcost" hidden>Concepto</th>
+                </tr>
+            </thead>
+            <tbody class="tbody" id="directcosttbody">
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" id="buttondirectcostadd" hidden>+</button>
+    </div>
+    <!--COST ADMIN-->
+    <div class="admincostcontainer">
+        <h2>Gastos administrativos</h2>
+        <table class="table" id="admincosttable">
+            <thead class="thead-dark">
+                <tr id="admincosthead">
+                <th scope="col" class="column" id="conceptcolumnadmincost" hidden>Concepto</th>
+                </tr>
+            </thead>
+            <tbody class="tbody" id="admincosttbody">
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" id="buttonadmincostadd" hidden>+</button>
+    </div>
+    <!--RESOURCES-->
+    <div class="resourcescontainer">
+        <h2>Recursos</h2>
+        <table class="table" id="resourcestable">
+            <thead class="thead-dark" id="" >
+                <tr id="resourcesthead">
+                    <th scope="col" class="column" id="conceptcolumnresources" hidden>Concepto</th>
+                </tr>
+            </thead>
+            <tbody class="tbody" id="resourcestbody">
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" id="buttonresourceadd" hidden>+</button>
     </div>
     <script src="../css/bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/newbudget.interactions.js" type="module"></script>
