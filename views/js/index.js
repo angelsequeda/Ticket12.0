@@ -112,7 +112,7 @@ export class renderTablesBudget {
 
     static cashflowcolumns(data,num) {
         document.getElementById('cashflowrowthead').innerHTML+=`<th id='${data}monthrowcashflow${num}'>${data}</th>`;
-        document.getElementById('Ingresos').innerHTML+=`<td><input type='text' id=earningsinputcashflow${num}></td>`;
+        document.getElementById('Ingresos').innerHTML+=`<td><input type='text' id=earningsinputcashflow${num} disabled></td>`;
         document.getElementById('Egresos').innerHTML+=`<td><input type='text' id=costinputcashflow${num} disabled></td>`;
         document.getElementById('Total').innerHTML+=`<td><input type='text' id=totalinputcashflow${num} disabled></td>`;
         document.getElementById('Acumulado').innerHTML+=`<td><input type='text' id=acumuladoinputcashflow${num} disabled></td>`;
