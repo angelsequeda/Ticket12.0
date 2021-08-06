@@ -7,6 +7,52 @@ let rowsinEarnings = 0;
 let rowsinDirectcost = 0;
 let rowsinAdmincost = 0;
 let rowsinresources = 0;
+
+/*const addcolumntoresourcecost = ()=> {
+
+    if (rowsinresources > 0) {
+        document.getElementById('resourcecostTotalcolumn').remove();
+        for(let i=1; i<=rowsinresources; i++) {
+            document.getElementById(`totalcostresourceperconcept${i}`).remove();
+            document.getElementById(`deleteadmincostrowcont${i}`).remove();
+            document.getElementById(`rowadmincost${i}`).insertAdjacentHTML('beforeend',`<td id="buttoncontaineradmincost${i}${num}"><input type ="text" id="admincosttotaladmincost${i}${num}" placeholder= "Total del mes" disabled></td><td id="totaladmincostperconcept${i}"><input type="text" id="totaladmincostperconceptinput${i}${num}" disabled></td><td id="deleteadmincostrowcont${i}"><button type="button" class="btn btn-danger" id="deleteadmincostrow${i}">Delete</button><button type="button" id ="readybuttonadmincost${i}" class = "btn btn-success" > Ready </button></td>`);
+
+        }
+        document.getElementById("admincosttotaladmincost").insertAdjacentHTML('beforeend',`<td><input type="text" id = "totalmonthadmincost${num}" disabled></td>`);
+        document.getElementById('admincosthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totaladmincostcolumnhead" >TOTAL</th>`);
+    }
+}*/
+
+const addrowtoresourcecost = () =>{
+
+    document.getElementById('resourcecosttbody').insertAdjacentHTML('beforeend',`<tr id= "rowresourcecost${rowsinresources}"></tr>`);
+    document.getElementById(`rowresourcecost${rowsinresources}`).insertAdjacentHTML("beforeend",`<td><input type ="text" id="resourcecostconcept${rowsinresources}" disabled></td>`);
+    document.getElementById(`resourcecostconcept${rowsinresources}`).value = document.getElementById(`conceptresource${rowsinresources}`).value 
+    for (let index = 1; index <= num; index++) {
+        document.getElementById(`rowresourcecost${rowsinresources}`).insertAdjacentHTML('beforeend',`<td><input type ="text" id="resourcecostsubtotal${rowsinresources}" disabled></td>`);
+        
+    }
+    document.getElementById('resourcescosthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totalresourcescostcolumnhead" >TOTAL</th>`);
+
+}
+
+const addrowsconcepttosomething = (name,number,content) => {
+    document.getElementById(name+'tbody').insertAdjacentHTML('beforeend',`<tr id = "row${name}${number}"></tr>`);
+    document.getElementById(`row${name}${number}`).insertAdjacentHTML('beforeend',`<td><input type ="text" id="${name}concept${number}" disabled></td>`);
+    document.getElementById(`${name}concept${number}`).value = content;
+}
+
+const addtotalconceptresource = (percent,total,row,column) => {
+    document.getElementById(`resourcecosttotal${row}${column}`).value = percent/100 * total;
+}
+
+const addrowsinputtosomething = (name,row,column,content,able) => {
+    document.getElementById(name).insertAdjacentHTML('beforeend', `<td><input type = "text" id="${name}input${row}${column}" ${able}></td>`)
+    if (content !== "") {
+        document.getElementById(`${name}input${row}${column}`).value = content;
+    }
+}
+
 document.getElementById('monthselect').addEventListener('change',()=> {
     num+=1;
     document.getElementById("conceptcolumn").hidden = false;
@@ -118,7 +164,7 @@ document.getElementById('addmonthbutton').addEventListener('click', ()=> {
 
 
 document.getElementById('buttonearningsadd').addEventListener('click', ()=> {
-    addrowtoresourcecost(num);
+    
     document.getElementById("earningstotalearnings").remove();
     rowsinEarnings+=1;
     document.getElementById('earningstbody').insertAdjacentHTML('beforeend',`<tr id= "rowearnings${rowsinEarnings}"></tr>`);
@@ -147,6 +193,7 @@ document.getElementById('buttonearningsadd').addEventListener('click', ()=> {
 })
 
 document.getElementById('buttondirectcostadd').addEventListener('click', ()=> {
+    
     document.getElementById("directcosttotaldirectcost").remove();
     rowsinDirectcost+=1;
     document.getElementById('directcosttbody').insertAdjacentHTML('beforeend',`<tr id= "rowdirectcost${rowsinDirectcost}"></tr>`);
@@ -223,7 +270,7 @@ document.getElementById('buttonadmincostadd').addEventListener('click', ()=> {
 })
 
 document.getElementById("buttonresourceadd").addEventListener('click', ()=> {
-
+    
     rowsinresources+=1;
     document.getElementById('resourcestbody').insertAdjacentHTML('beforeend',`<tr id= "rowresource${rowsinresources}"></tr>`);
     document.getElementById(`rowresource${rowsinresources}`).insertAdjacentHTML("beforeend",`<td><input type ="text" id="conceptresource${rowsinresources}" placeholder= "Concepto"></td>`);
@@ -242,5 +289,6 @@ document.getElementById("buttonresourceadd").addEventListener('click', ()=> {
         }
 
     }
+    addrowtoresourcecost();
 })
 
