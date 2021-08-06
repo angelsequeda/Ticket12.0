@@ -58,7 +58,7 @@ document.getElementById('addmonthbutton').addEventListener('click', ()=> {
         for(let i=1; i<=rowsinEarnings; i++) {
             document.getElementById(`totalearningsperconcept${i}`).remove();
             document.getElementById(`deleteearningrowcont${i}`).remove();
-            document.getElementById(`rowearnings${i}`).insertAdjacentHTML("beforeend",`<td><input type ="text" id="earningtotalearnings${i}${num}" placeholder= "Total del mes" ></td><td id="totalearningsperconcept${i}"><input type="text" id="totalearningperconceptinput${i}" disabled></td><td id="deleteearningrowcont${i}"><input type ="checkbox" id="deleteearningrow${i}"></td>`);
+            document.getElementById(`rowearnings${i}`).insertAdjacentHTML("beforeend",`<td id="buttoncontainerresource${rowsinresources}1"><input type ="text" id="resourcecosttotalinput${rowsinresources}1" placeholder= "Costo"><input type ="text" id="resourcepercentinput${rowsinresources}1" placeholder= "%"></td><td id="totalresourceperconcept${rowsinresources}"><input type="text" id="totalresourceperconceptinput${rowsinresources}1" disabled></td><td id="deleteresourcerowcont${rowsinresources}"><button type="button" class="btn btn-danger" id="deleteresourcerow${rowsinresources}">Delete</button><button type="button" id ="readybuttonresource${rowsinresources}" class = "btn btn-success" > Ready </button></td>`);
 
         }
         document.getElementById("earningstotalearnings").insertAdjacentHTML("beforeend",`<td><input type="text" id = "totalmonthearning${num}" disabled></td>`);
@@ -82,23 +82,28 @@ document.getElementById('addmonthbutton').addEventListener('click', ()=> {
 
     if (rowsinAdmincost > 0) {
         document.getElementById("Totaladmincostcolumnhead").remove();
-        for(let i=1; i<=rowsinDirectcost; i++) {
+        for(let i=1; i<=rowsinAdmincost; i++) {
             document.getElementById(`totaladmincostperconcept${i}`).remove();
             document.getElementById(`deleteadmincostrowcont${i}`).remove();
-            document.getElementById(`rowdirectcost${i}`).insertAdjacentHTML('beforeend',`<td id="buttoncontaineradmincost${i}${num}"><input type ="text" id="admincosttotaladmincost${i}${num}" placeholder= "Total del mes" disabled></td><td id="totaladmincostperconcept${i}"><input type="text" id="totaladmincostperconceptinput${i}${num}" disabled></td><td id="deleteadmincostrowcont${i}"><button type="button" class="btn btn-danger" id="deleteadmincostrow${i}">Delete</button><button type="button" id ="readybuttonadmincost${i}" class = "btn btn-success" > Ready </button></td>`);
+            document.getElementById(`rowadmincost${i}`).insertAdjacentHTML('beforeend',`<td id="buttoncontaineradmincost${i}${num}"><input type ="text" id="admincosttotaladmincost${i}${num}" placeholder= "Total del mes" disabled></td><td id="totaladmincostperconcept${i}"><input type="text" id="totaladmincostperconceptinput${i}${num}" disabled></td><td id="deleteadmincostrowcont${i}"><button type="button" class="btn btn-danger" id="deleteadmincostrow${i}">Delete</button><button type="button" id ="readybuttonadmincost${i}" class = "btn btn-success" > Ready </button></td>`);
             renderTablesBudget.createbuttons(`buttoncontaineradmincost${i}${num}`);
             renderTablesBudget.buttonsabilitate(`butttonFreeeditbuttoncontaineradmincost${i}${num}`,`admincosttotaladmincost${i}${num}`);
             renderTablesBudget.buttonsumatories(`buttonSumatorybuttoncontaineradmincost${i}${num}`,num);
 
         }
-        document.getElementById("directcosttotaldirectcost").insertAdjacentHTML('beforeend',`<td><input type="text" id = "totalmonthdirectcost${num}" disabled></td>`);
-        document.getElementById('directcosthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totaldirectcostcolumnhead" >TOTAL</th>`);
+        document.getElementById("admincosttotaladmincost").insertAdjacentHTML('beforeend',`<td><input type="text" id = "totalmonthadmincost${num}" disabled></td>`);
+        document.getElementById('admincosthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totaladmincostcolumnhead" >TOTAL</th>`);
     }
 
     if (rowsinresources > 0) {
+        document.getElementById('Totalresourcecolumnhead').remove();
         for(let i=1; i<=rowsinresources; i++) {
-            document.getElementById(`rowresource${i}`).insertAdjacentHTML('beforeend'`<td><input type ="text" id="percentresourceresources${i}${num}" placeholder= "%"><input type ="text" id="costresourceresources${i}${num}" placeholder= "Costo"></td>`);
+            document.getElementById(`totalresourceperconcept${i}`).remove();
+            document.getElementById(`deleteresourcerowcont${i}`).remove();
+            document.getElementById(`rowresource${i}`).insertAdjacentHTML('beforeend',`<td id="buttoncontainerresource${i}${num}"><input type ="text" id="resourcecosttotalinput${i}${num}" placeholder= "Costo"><input type ="text" id="resourcepercentinput${i}${num}" placeholder= "%"></td><td id="totalresourceperconcept${i}"><input type="text" id="totalresourceperconceptinput${i}" disabled></td><td id="deleteresourcerowcont${i}"><button type="button" class="btn btn-danger" id="deleteresourcerow${i}">Delete</button><button type="button" id ="readybuttonresource${i}" class = "btn btn-success" > Ready </button></td>`);
+            
         }
+        document.getElementById('resourcesthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totalresourcecolumnhead" >TOTAL</th>`);
     
     }
 
@@ -122,6 +127,9 @@ document.getElementById('buttonearningsadd').addEventListener('click', ()=> {
             document.getElementById(`rowearnings${rowsinEarnings}`).insertAdjacentHTML('beforeend',`<td><input type ="text" id="earningtotalearnings${rowsinEarnings}${i}" placeholder= "Total del mes"></td></td>`);
         }
         document.getElementById(`rowearnings${rowsinEarnings}`).insertAdjacentHTML('beforeend',`<td id="totalearningsperconcept${rowsinEarnings}"><input type="text" id="totalearningperconceptinput${rowsinEarnings}" disabled></td><td id="deleteearningrowcont${rowsinEarnings}"><input type ="checkbox" id="deleteearningrow${rowsinEarnings}"></td>`);
+        if(rowsinEarnings === 1) {
+            document.getElementById('earningsthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totalearningscolumnhead" >TOTAL</th>`);
+        }
     }
     document.getElementById("earningstbody").insertAdjacentHTML('beforeend',`<tr id="earningstotalearnings">
     <td>TOTAL</td>
@@ -153,9 +161,10 @@ document.getElementById('buttondirectcostadd').addEventListener('click', ()=> {
             renderTablesBudget.buttonsabilitate(`butttonFreeeditbuttoncontainerdirectcost${rowsinDirectcost}1`,`directcosttotaldirectcost${rowsinDirectcost}1`);
             renderTablesBudget.buttonsumatories(`buttonSumatorybuttoncontainerdirectcost${rowsinDirectcost}${i}`,num);
         }
-        document.getElementById(`rowdirectcost${rowsinDirectcost}`).insertAdjacentHTML("beforeend",`<td id="totaldirectcostperconcept${rowsinDirectcost}"><input type="text" id="totaldirectcostperconceptinput${rowsinDirectcost}" disabled></td><td id="deletedirectcostrowcont${rowsinDirectcost}"><button type="button" class="btn btn-danger" id="deletedirectcostrow${rowsinDirectcost}">Delete</button><button type="button" id ="readybuttondirectcost" class = "btn btn-success" >Ready</button></td>`);
-        document.getElementById('directcosthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totaldirectcostcolumnhead" >TOTAL</th>`);
-
+        document.getElementById(`rowdirectcost${rowsinDirectcost}`).insertAdjacentHTML("beforeend",`<td id="totaldirectcostperconcept${rowsinDirectcost}"><input type="text" id="totaldirectcostperconceptinput${rowsinDirectcost}" disabled></td><td id="deletedirectcostrowcont${rowsinDirectcost}"><button type="button" class="btn btn-danger" id="deletedirectcostrow${rowsinDirectcost}">Delete</button><button type="button" id ="readybuttondirectcost${rowsinAdmincost}" class = "btn btn-success" >Ready</button></td>`);
+        if( rowsinDirectcost === 1) {
+            document.getElementById('directcosthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totaldirectcostcolumnhead" >TOTAL</th>`);
+        }
         }
     document.getElementById("directcosttbody").insertAdjacentHTML("beforeend",`<tr id="directcosttotaldirectcost">
     <td>TOTAL</td>
@@ -171,17 +180,16 @@ document.getElementById('buttondirectcostadd').addEventListener('click', ()=> {
 document.getElementById('buttonadmincostadd').addEventListener('click', ()=> {
     document.getElementById("admincosttotaladmincost").remove();
     rowsinAdmincost+=1;
-    document.getElementById('admincostbody').insertAdjacentHTML('beforeend',`<tr id= "rowdirectcost${rowsinAdmincost}"></tr>`);
-    document.getElementById(`rowdirectcost${rowsinAdmincost}`).insertAdjacentHTML("beforeend",`<td><input type ="text" id="costconceptdirectcost${rowsinAdmincost}" placeholder= "Concepto"></td>`);
+    document.getElementById('admincostbody').insertAdjacentHTML('beforeend',`<tr id= "rowadmincost${rowsinAdmincost}"></tr>`);
+    document.getElementById(`rowadmincost${rowsinAdmincost}`).insertAdjacentHTML("beforeend",`<td><input type ="text" id="costconceptadmincost${rowsinAdmincost}" placeholder= "Concepto"></td>`);
 
     if(num<2 && rowsinAdmincost<=1) {
 
         document.getElementById(`rowadmincost${rowsinAdmincost}`).insertAdjacentHTML("beforeend",`<td id="buttoncontaineradmincost${rowsinAdmincost}1"><input type ="text" id="admincosttotaladmincost${rowsinAdmincost}1" placeholder= "Total del mes" disabled></td><td id="totaladmincostperconcept${rowsinAdmincost}"><input type="text" id="totaladmincostperconceptinput${rowsinAdmincost}1" disabled></td><td id="deleteadmincostrowcont${rowsinAdmincost}"><button type="button" class="btn btn-danger" id="deletedirectcostrow${rowsinAdmincost}">Delete</button><button type="button" id ="readybuttonadmincost${rowsinAdmincost}" class = "btn btn-success" > Ready </button></td>`);
-        document.getElementById('directcosthead').insertAdjacentHTML("beforeend",`<th scope="col" class="column" id="Totaldirectcostcolumnhead" >TOTAL</th>`);
         renderTablesBudget.createbuttons(`buttoncontaineradmincost${rowsinAdmincost}1`);
         renderTablesBudget.buttonsabilitate(`butttonFreeeditbuttoncontaineradmincost${rowsinAdmincost}1`,`admincosttotaladmincost${rowsinAdmincost}1`);
         renderTablesBudget.buttonsumatories(`buttonSumatorybuttoncontaineradmincost${rowsinAdmincost}1`,num);
-        document.getElementById('earningsthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totalearningscolumnhead" >TOTAL</th>`);
+        document.getElementById('admincosthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totaladmincostcolumnhead" >TOTAL</th>`);
 
     }else{
         for (let i=1 ;i<=num; i++) {
@@ -190,10 +198,12 @@ document.getElementById('buttonadmincostadd').addEventListener('click', ()=> {
             renderTablesBudget.buttonsabilitate(`butttonFreeeditbuttoncontaineradmincost${rowsinAdmincost}1`,`admincosttotaladmincost${rowsinAdmincost}1`);
             renderTablesBudget.buttonsumatories(`buttonSumatorybuttoncontaineradmincost${rowsinAdmincost}${i}`,num);
         }
-        document.getElementById(`rowadmincost${rowsinAdmincost}`).insertAdjacentHTML("beforeend",`<td id="totaladmincostperconcept${rowsinAdmincost}"><input type="text" id="totaladmincostperconceptinput${rowsinAdmincost}" disabled></td><td id="deleteadmincostrowcont${rowsinAdmincost}"><button type="button" class="btn btn-danger" id="deletedirectcostrow${rowsinAdmincost}">Delete</button><button type="button" id ="readybuttonadmincost" class = "btn btn-success" >Ready</button></td>`);
-        document.getElementById('directcosthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totaldirectcostcolumnhead" >TOTAL</th>`);
-
+        document.getElementById(`rowadmincost${rowsinAdmincost}`).insertAdjacentHTML("beforeend",`<td id="totaladmincostperconcept${rowsinAdmincost}"><input type="text" id="totaladmincostperconceptinput${rowsinAdmincost}" disabled></td><td id="deleteadmincostrowcont${rowsinAdmincost}"><button type="button" class="btn btn-danger" id="deletedirectcostrow${rowsinAdmincost}">Delete</button><button type="button" id ="readybuttonadmincost${rowsinAdmincost}" class = "btn btn-success" >Ready</button></td>`);
+        if(rowsinAdmincost === 1) {
+            document.getElementById('admincosthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totaladmincostcolumnhead" >TOTAL</th>`);
         }
+
+    }
     document.getElementById("admincostbody").insertAdjacentHTML("beforeend",`<tr id="admincosttotaladmincost">
     <td>TOTAL</td>
     </tr>`);
@@ -205,3 +215,24 @@ document.getElementById('buttonadmincostadd').addEventListener('click', ()=> {
 
 })
 
+document.getElementById("buttonresourceadd").addEventListener('click', ()=> {
+
+    rowsinresources+=1;
+    document.getElementById('resourcestbody').insertAdjacentHTML('beforeend',`<tr id= "rowresource${rowsinresources}"></tr>`);
+    document.getElementById(`rowresource${rowsinresources}`).insertAdjacentHTML("beforeend",`<td><input type ="text" id="conceptresource${rowsinresources}" placeholder= "Concepto"></td>`);
+
+    if(num < 2 && rowsinresources <= 1) {
+        document.getElementById(`rowresource${rowsinresources}`).insertAdjacentHTML("beforeend",`<td id="buttoncontainerresource${rowsinresources}1"><input type ="text" id="resourcecosttotalinput${rowsinresources}1" placeholder= "Costo"><input type ="text" id="resourcepercentinput${rowsinresources}1" placeholder= "%"></td><td id="totalresourceperconcept${rowsinresources}"><input type="text" id="totalresourceperconceptinput${rowsinresources}" disabled></td><td id="deleteresourcerowcont${rowsinresources}"><button type="button" class="btn btn-danger" id="deleteresourcerow${rowsinresources}">Delete</button><button type="button" id ="readybuttonresource${rowsinresources}" class = "btn btn-success" > Ready </button></td>`);
+        document.getElementById('resourcesthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totalresourcecolumnhead" >TOTAL</th>`);
+    }else {
+
+        for (let i=1 ;i<=num; i++) {
+            document.getElementById(`rowresource${rowsinresources}`).insertAdjacentHTML("beforeend",`<td id="buttoncontainerresource${rowsinresources}${i}"><input type ="text" id="resourcecosttotalinput${rowsinresources}${i}" placeholder= "Costo"><input type ="text" id="resourcepercentinput${rowsinresources}${i}" placeholder= "%"></td>`);
+        }
+        document.getElementById(`rowresource${rowsinresources}`).insertAdjacentHTML("beforeend",`<td id="totalresourceperconcept${rowsinresources}"><input type="text" id="totalresourceperconcept${rowsinresources}" disabled></td><td id="deleteresourcerowcont${rowsinresources}"><button type="button" class="btn btn-danger" id="deleteresourcerow${rowsinresources}">Delete</button><button type="button" id ="readybuttonresource${rowsinresources}" class = "btn btn-success" >Ready</button></td>`);
+        if(rowsinresources === 1) {
+            document.getElementById('admincosthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totaladmincostcolumnhead" >TOTAL</th>`);
+        }
+
+    }
+})
