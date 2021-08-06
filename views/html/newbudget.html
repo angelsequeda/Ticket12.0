@@ -37,7 +37,19 @@
         </table>
         <button type="button" class="btn btn-primary" id="addmonthbutton">Nuevo mes</button>
     </div>
-    
+    <div class="earningscontainer">
+        <h2>Ingresos</h2>
+        <table class="table" id="earningstable">
+            <thead class="thead-dark">
+                <tr id="earningsthead">
+                <th scope="col" class="column" id="conceptcolumnearnings" hidden>Concepto</th>
+                </tr>
+            </thead>
+            <tbody class="tbody" id="earningstbody">
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-primary" id="buttonearningsadd" hidden>+</button>
+    </div>
     <script src="../css/bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/newbudget.interactions.js" type="module"></script>
 </body>

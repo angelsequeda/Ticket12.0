@@ -100,7 +100,7 @@ export class renderTablesBudget {
 
     static cashflowrows() {
 
-        let info = ['Ingresos','Egresos','Total'];
+        let info = ['Ingresos','Egresos','Total','Acumulado'];
         info.forEach(element => {
             let newfile = document.createElement('tr');
             newfile.id = element;
@@ -111,9 +111,12 @@ export class renderTablesBudget {
     }
 
     static cashflowcolumns(data,num) {
-        document.getElementById('cashflowrowthead').innerHTML+=`<th id='${data}monthrow'>${data}</th>`;
-        document.getElementById('Ingresos').innerHTML+=`<th><input type='text' id=earningsinputcashflow${num}></th>`;
-        document.getElementById('Egresos').innerHTML+=`<th><input type='text' id=costinputcashflow${num} disabled></th>`;
-        document.getElementById('Total').innerHTML+=`<th><input type='text' id=totalinputcashflow${num} disabled></th>`;
+        document.getElementById('cashflowrowthead').innerHTML+=`<th id='${data}monthrow${num}'>${data}</th>`;
+        document.getElementById('Ingresos').innerHTML+=`<td><input type='text' id=earningsinputcashflow${num}></td>`;
+        document.getElementById('Egresos').innerHTML+=`<td><input type='text' id=costinputcashflow${num} disabled></td>`;
+        document.getElementById('Total').innerHTML+=`<td><input type='text' id=totalinputcashflow${num} disabled></td>`;
+        document.getElementById('Acumulado').innerHTML+=`<td><input type='text' id=acumuladoinputcashflow${num} disabled></td>`;
+        document.getElementById('earningsthead').innerHTML+=`<th id='${data}monthrow${num}'>${data}</th>`;
     }
+
 }
