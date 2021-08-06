@@ -111,24 +111,26 @@ export class renderTablesBudget {
     }
 
     static cashflowcolumns(data,num) {
-        document.getElementById('cashflowrowthead').innerHTML+=`<th id='${data}monthrowcashflow${num}'>${data}</th>`;
-        document.getElementById('Ingresos').innerHTML+=`<td><input type='text' id=earningsinputcashflow${num} disabled></td>`;
-        document.getElementById('Egresos').innerHTML+=`<td><input type='text' id=costinputcashflow${num} disabled></td>`;
-        document.getElementById('Total').innerHTML+=`<td><input type='text' id=totalinputcashflow${num} disabled></td>`;
-        document.getElementById('Acumulado').innerHTML+=`<td><input type='text' id=acumuladoinputcashflow${num} disabled></td>`;
-        document.getElementById('earningsthead').innerHTML+=`<th id='${data}monthrowearnings${num}'>${data}</th>`;
-        document.getElementById('directcosthead').innerHTML+=`<th id='${data}monthrowdirectcost${num}'>${data}<input type="checkbox" id="directcolumnforcalculusdirectcost${num}" disabled></th>`;
-        document.getElementById('admincosthead').innerHTML+=`<th id='${data}monthrowadmincost${num}'>${data}</th>`;
-        document.getElementById('resourcesthead').innerHTML+=`<th id='${data}monthrowresources${num}'>${data}</th>`;
+        document.getElementById('cashflowrowthead').insertAdjacentHTML("beforeend",`<th id='${data}monthrowcashflow${num}'>${data}</th>`);
+        document.getElementById('Ingresos').insertAdjacentHTML("beforeend",`<td><input type='text' id=earningsinputcashflow${num} disabled></td>`);
+        document.getElementById('Egresos').insertAdjacentHTML("beforeend",`<td><input type='text' id=costinputcashflow${num} disabled></td>`);
+        document.getElementById('Total').insertAdjacentHTML("beforeend",`<td><input type='text' id=totalinputcashflow${num} disabled></td>`);
+        document.getElementById('Acumulado').insertAdjacentHTML("beforeend",`<td><input type='text' id=acumuladoinputcashflow${num} disabled></td>`);
+        document.getElementById('earningsthead').insertAdjacentHTML("beforeend",`<th id='${data}monthrowearnings${num}'>${data}</th>`);
+        document.getElementById('directcosthead').insertAdjacentHTML("beforeend",`<th id='${data}monthrowdirectcost${num}'>${data}<input type="checkbox" id="directcolumnforcalculusdirectcost${num}" disabled></th>`);
+        document.getElementById('admincosthead').insertAdjacentHTML("beforeend",`<th id='${data}monthrowadmincost${num}'>${data}</th>`);
+        document.getElementById('resourcesthead').insertAdjacentHTML("beforeend",`<th id='${data}monthrowresources${num}'>${data}</th>`);
     }
-
+    
     static createbuttons(name) {
         
         let butttonFreeedit = `<button type= "button" style="margin=left:1px" class= "btn btn-primary" id="butttonFreeedit${name}">Edit</button>`;
         let buttonSumatory = `<button type= "button" style="margin=left:1px" class= "btn btn-primary" id="buttonSumatory${name}">Sumar</button>`;
         let buttonPercent = `<button type= "button" class= "btn btn-primary" id="buttonPercent${name}">%</button>`
         
-        document.getElementById(name).innerHTML+=butttonFreeedit+buttonSumatory+buttonPercent;
+        document.getElementById(name).insertAdjacentHTML('beforeend',butttonFreeedit);
+        document.getElementById(name).insertAdjacentHTML('beforeend',buttonSumatory);
+        document.getElementById(name).insertAdjacentHTML('beforeend',buttonPercent)
 
     }
 
@@ -150,7 +152,7 @@ export class renderTablesBudget {
     }
 
     static buttonpercentiles(name,num) {
-        
+
     }
 
 }
