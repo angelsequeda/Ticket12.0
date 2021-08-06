@@ -117,14 +117,13 @@ export class renderTablesBudget {
         document.getElementById('Total').innerHTML+=`<td><input type='text' id=totalinputcashflow${num} disabled></td>`;
         document.getElementById('Acumulado').innerHTML+=`<td><input type='text' id=acumuladoinputcashflow${num} disabled></td>`;
         document.getElementById('earningsthead').innerHTML+=`<th id='${data}monthrowearnings${num}'>${data}</th>`;
-        document.getElementById('directcosthead').innerHTML+=`<th id='${data}monthrowdirectcost${num}'>${data}</th>`;
+        document.getElementById('directcosthead').innerHTML+=`<th id='${data}monthrowdirectcost${num}'>${data}<input type="checkbox" id="directcolumnforcalculusdirectcost${num}" disabled></th>`;
         document.getElementById('admincosthead').innerHTML+=`<th id='${data}monthrowadmincost${num}'>${data}</th>`;
         document.getElementById('resourcesthead').innerHTML+=`<th id='${data}monthrowresources${num}'>${data}</th>`;
     }
 
     static createbuttons(name) {
         
-        console.log(name);
         let butttonFreeedit = `<button type= "button" style="margin=left:1px" class= "btn btn-primary" id="butttonFreeedit${name}">Edit</button>`;
         let buttonSumatory = `<button type= "button" style="margin=left:1px" class= "btn btn-primary" id="buttonSumatory${name}">Sumar</button>`;
         let buttonPercent = `<button type= "button" class= "btn btn-primary" id="buttonPercent${name}">%</button>`
@@ -134,13 +133,24 @@ export class renderTablesBudget {
     }
 
     static buttonsabilitate(name,abilitate) {
-        console.log(name);
-        console.log(abilitate);
+        
         document.getElementById(name).addEventListener('click' ,()=> {
             console.log('bien');
             document.getElementById(abilitate).disabled = false;
         });
 
+    }
+
+    static buttonsumatories(name,num) {
+        document.getElementById(name).addEventListener('click', ()=> {
+            for (let index = 1; index <= num; index++) {
+                document.getElementById(`directcolumnforcalculusdirectcost${index}`).disabled = false;
+            }
+        },true)
+    }
+
+    static buttonpercentiles(name,num) {
+        
     }
 
 }
