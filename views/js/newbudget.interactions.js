@@ -82,6 +82,7 @@ document.getElementById('addmonthbutton').addEventListener('click', ()=> {
     }
 
     if (rowsinAdmincost > 0) {
+        addcolumntoresourcecost();
         document.getElementById("Totaladmincostcolumnhead").remove();
         for(let i=1; i<=rowsinAdmincost; i++) {
             document.getElementById(`totaladmincostperconcept${i}`).remove();
@@ -108,6 +109,7 @@ document.getElementById('addmonthbutton').addEventListener('click', ()=> {
     
     }
 
+
     document.getElementById('cashflowrowthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="totalcolumncashflow" >Total</th>`);
     document.getElementById('Ingresos').insertAdjacentHTML('beforeend',`<td id="delete1"><input type='text' id="totalearningsinputcashflow" disabled></td>`);
     document.getElementById('Egresos').insertAdjacentHTML('beforeend',`<td id="delete2"><input type='text' id="totalcostinpucashflow" disabled></td>`);
@@ -116,6 +118,7 @@ document.getElementById('addmonthbutton').addEventListener('click', ()=> {
 
 
 document.getElementById('buttonearningsadd').addEventListener('click', ()=> {
+    addrowtoresourcecost(num);
     document.getElementById("earningstotalearnings").remove();
     rowsinEarnings+=1;
     document.getElementById('earningstbody').insertAdjacentHTML('beforeend',`<tr id= "rowearnings${rowsinEarnings}"></tr>`);
@@ -240,3 +243,4 @@ document.getElementById("buttonresourceadd").addEventListener('click', ()=> {
 
     }
 })
+
