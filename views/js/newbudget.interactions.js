@@ -50,9 +50,13 @@ const addrowsbecauseofresources = () =>{
     </tr>`);
     document.getElementById("resoucescostbalancetbody").insertAdjacentHTML("beforeend",`<tr id="resourcecostbalancetotalresourcecostbalance">
     <td>TOTAL</td>
-    </tr>`)
-    document.getElementById("resourcecosttotalresourcecost").insertAdjacentHTML("beforeend",`<td><input type="text" id = "totalmonthresourcecost${num}" disabled></td>`);
-    document.getElementById("resourcecostbalancetotalresourcecostbalance").insertAdjacentHTML("beforeend",`<td><input type="text" id = "totalmonthresoucescostbalance${num}" disabled></td>`);
+    </tr>`);
+    for (let i = 0; i <= num; i++) {
+        document.getElementById("resourcecosttotalresourcecost").insertAdjacentHTML("beforeend",`<td><input type="text" id = "totalmonthresourcecost${i}" disabled></td>`);
+        document.getElementById("resourcecostbalancetotalresourcecostbalance").insertAdjacentHTML("beforeend",`<td><input type="text" id = "totalmonthresoucescostbalance${i}" disabled></td>`);
+        
+    }
+    
     document.getElementById(`rowresourcecost${rowsinresources}`).insertAdjacentHTML('beforeend',`<td id= "totalresourcecostperconceptcont${rowsinresources}"><input type= "text" id= "totalresourcecostperconcept${rowsinresources}"disabled></td>`);
     document.getElementById(`rowresoucescostbalance${rowsinresources}`).insertAdjacentHTML('beforeend',`<td id="totalresourcecostbalanceperconceptcont${rowsinresources}"><input type= "text" id= "totalresourcecostbalanceperconcept${rowsinresources}" disabled></td>`);
 
