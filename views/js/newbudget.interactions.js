@@ -1,4 +1,4 @@
-import { renderTablesBudget } from "./index.js";
+import { functionsButtons, renderTablesBudget } from "./index.js";
 
 let months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 let months2 = [];
@@ -244,6 +244,7 @@ document.getElementById('buttonearningsadd').addEventListener('click', ()=> {
     if(num < 2 && rowsinEarnings<=1) {
         document.getElementById(`rowearnings${rowsinEarnings}`).insertAdjacentHTML('beforeend',`<td id="buttoncontainerearning${rowsinEarnings}1"><input type ="text" id="earningtotalearning${rowsinEarnings}1" placeholder= "Total del mes"></td><td id="totalearningperconcept${rowsinEarnings}"><input type="text" id="totalearningperconceptinput${rowsinEarnings}1" disabled></td><td id="deleteearningrowcont${rowsinEarnings}"><button type="button" class="btn btn-danger" id="deleteearningrow${rowsinEarnings}">Delete</button><button type="button" id ="readybuttonearning${rowsinEarnings}" class = "btn btn-success" > Ready </button></td>`);
         document.getElementById('earningsthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totalearningscolumnhead" >TOTAL</th>`);
+        functionsButtons.buttonsum(`readybuttonearning${rowsinEarnings}`,num,rowsinEarnings,)
     }else{
         for (let i=1 ;i<=num; i++) {
             document.getElementById(`rowearnings${rowsinEarnings}`).insertAdjacentHTML('beforeend',`<td id= "buttoncontainerearning${rowsinEarnings}${i}"><input type ="text" id="earningtotalearnings${rowsinEarnings}${i}" placeholder= "Total del mes"></td>`);

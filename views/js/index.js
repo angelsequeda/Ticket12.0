@@ -154,10 +154,23 @@ export class renderTablesBudget {
         },true)
     }
 
-    static buttonpercentiles(name,num) {
-
-    }
-
+    
 }
 
 
+export class functionsButtons {
+
+    static buttonsum(name,num,rows,table) {
+        let resultvertical = 0;
+        let resulthorizontal = 0;
+        document.getElementById(name).addEventListener('click', ()=> {
+            for (let index = 1; index <= num; index++) {
+                resulthorizontal+= document.getElementById(table+index.toString).value;
+            }
+            for (let index = 1; index <= rows; index++) {
+                resultvertical+= document.getElementById(table+index.toString).value;
+            }
+        })
+        return [resultvertical,resulthorizontal];
+    }
+}
