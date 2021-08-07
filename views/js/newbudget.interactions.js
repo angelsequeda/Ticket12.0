@@ -31,21 +31,20 @@ const addrowsbecauseofresources = () =>{
     document.getElementById("resourcecostbalancetotalresourcecostbalance").remove();
 
     document.getElementById('resourcecosttbody').insertAdjacentHTML('beforeend',`<tr id= "rowresourcecost${rowsinresources}"></tr>`);
-    document.getElementById(`rowresourcecost${rowsinresources}`).insertAdjacentHTML("beforeend",`<td><input type ="text" id="resourcecostconcept${rowsinresources}" disabled></td>`);
-    document.getElementById(`resourcecostconcept${rowsinresources}`).value = document.getElementById(`conceptresource${rowsinresources}`).value 
+    document.getElementById(`rowresourcecost${rowsinresources}`).insertAdjacentHTML("beforeend",`<td id="resourcecostconceptcont${rowsinresources}><input type ="text" id="resourcecostconcept${rowsinresources}" disabled></td>`);
     document.getElementById('resoucescostbalancetbody').insertAdjacentHTML('beforeend',`<tr id= "rowresoucescostbalance${rowsinresources}"></tr>`);
-    document.getElementById(`rowresoucescostbalance${rowsinresources}`).insertAdjacentHTML("beforeend",`<td><input type ="text" id="resoucescostbalanceconcept${rowsinresources}" disabled></td>`);
-    document.getElementById(`resoucescostbalanceconcept${rowsinresources}`).value = document.getElementById(`conceptresource${rowsinresources}`).value 
+    document.getElementById(`rowresoucescostbalance${rowsinresources}`).insertAdjacentHTML("beforeend",`<td id="resoucescostbalanceconceptcont${rowsinresources}"><input type ="text" id="resoucescostbalanceconcept${rowsinresources}" disabled></td>`);
 
     for (let index = 1; index <= num; index++) {
         document.getElementById(`rowresourcecost${rowsinresources}`).insertAdjacentHTML('beforeend',`<td><input type ="text" id="resourcecostsubtotal${rowsinresources}${index}" disabled></td>`);
         document.getElementById(`rowresoucescostbalance${rowsinresources}`).insertAdjacentHTML('beforeend',`<td><input type ="text" id="resoucescostbalancesubtotal${rowsinresources}${index}" disabled></td>`)
     }
     
-    if (rowsinresources === 1 && num < 2) {
+    if (rowsinresources === 1 & num < 2) {
         document.getElementById('resourcescosthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totalresourcescostcolumnhead" >TOTAL</th>`);
         document.getElementById('resourcebalancethead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totalresoucescostbalancecolumnhead" >TOTAL</th>`);
     }
+
     document.getElementById("resourcecosttbody").insertAdjacentHTML("beforeend",`<tr id="resourcecosttotalresourcecost">
     <td>TOTAL</td>
     </tr>`);
@@ -54,6 +53,8 @@ const addrowsbecauseofresources = () =>{
     </tr>`)
     document.getElementById("resourcecosttotalresourcecost").insertAdjacentHTML("beforeend",`<td><input type="text" id = "totalmonthresourcecost${num}" disabled></td>`);
     document.getElementById("resourcecostbalancetotalresourcecostbalance").insertAdjacentHTML("beforeend",`<td><input type="text" id = "totalmonthresoucescostbalance${num}" disabled></td>`);
+    document.getElementById(`rowresourcecost${rowsinresources}`).insertAdjacentHTML('beforeend',`<td id= "totalresourcecostperconceptcont${rowsinresources}"><input type= "text" id= "totalresourcecostperconcept${rowsinresources}"disabled></td>`);
+    document.getElementById(`rowresoucescostbalance${rowsinresources}`).insertAdjacentHTML('beforeend',`<td id="totalresourcecostbalanceperconceptcont${rowsinresources}"><input type= "text" id= "totalresourcecostbalanceperconcept${rowsinresources}" disabled></td>`);
 
 }
 
@@ -62,17 +63,32 @@ const addcolumnsbecauseofmonths = () => {
     if(rowsinresources > 0) {
         document.getElementById("Totalresourcescostcolumnhead").remove();
         document.getElementById("Totalresoucescostbalancecolumnhead").remove();
+        
+        if (num > 1 && rowsinresources > 0) {
+            for (let index = 1; index <= rowsinresources; index++) {
+                document.getElementById(`totalresourcecostperconceptcont${index}`).remove();
+                document.getElementById(`totalresourcecostbalanceperconceptcont${index}`).remove();
+                
+            }
+        }  
 
         for (let index = 1; index <= rowsinresources; index++) {
-            document.getElementById(`rowresourcecost${index}`).insertAdjacentHTML('beforeend',`<td><input type="text" id="resourcecostsubtotal"${index}${num}></td><td><input type= "text" id= "totalresourcecostperconcept${index}"></td><td>`);
-            document.getElementById(`rowresoucescostbalance${index}`).insertAdjacentHTML('beforeend',`<td><input type="text" id="resoucescostbalancesubtotal"${index}${num}></td><td><input type= "text" id= "totalresourcecostbalanceperconcept${index}"></td><td>`);
+            document.getElementById(`rowresourcecost${index}`).insertAdjacentHTML('beforeend',`<td><input type="text" id="resourcecostsubtotal${index}${num}" disabled></td>`);
+            document.getElementById(`rowresoucescostbalance${index}`).insertAdjacentHTML('beforeend',`<td><input type="text" id="resoucescostbalancesubtotal${index}${num}" disabled></td>`);
             
         }
-
+              
+        
         document.getElementById("resourcecosttotalresourcecost").insertAdjacentHTML("beforeend",`<td><input type="text" id = "totalmonthresourcecost${num}" disabled></td>`);
-        document.getElementById("resource").insertAdjacentHTML("beforeend",`<td><input type="text" id = "totalmonthresoucescostbalance${num}" disabled></td>`);
+        document.getElementById("resourcecostbalancetotalresourcecostbalance").insertAdjacentHTML("beforeend",`<td><input type="text" id = "totalmonthresoucescostbalance${num}" disabled></td>`);
         document.getElementById('resourcescosthead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totalresourcescostcolumnhead" >TOTAL</th>`);
         document.getElementById('resourcebalancethead').insertAdjacentHTML('beforeend',`<th scope="col" class="column" id="Totalresoucescostbalancecolumnhead" >TOTAL</th>`);
+
+        for (let i = 1; i <= rowsinresources; i++) {
+            document.getElementById(`rowresourcecost${i}`).insertAdjacentHTML('beforeend',`<td id= "totalresourcecostperconceptcont${i}"><input type= "text" id= "totalresourcecostperconcept${i}"disabled></td>`);
+            document.getElementById(`rowresoucescostbalance${i}`).insertAdjacentHTML('beforeend',`<td id="totalresourcecostbalanceperconceptcont${i}"><input type= "text" id= "totalresourcecostbalanceperconcept${i}" disabled></td>`);
+            
+        }
     }
     
 }
@@ -192,7 +208,7 @@ document.getElementById('addmonthbutton').addEventListener('click', ()=> {
 
     if (rowsinresources > 0) {
         
-        //addcolumnsbecauseofmonths();
+        addcolumnsbecauseofmonths();
         document.getElementById('Totalresourcecolumnhead').remove();
         for(let i=1; i<=rowsinresources; i++) {
             document.getElementById(`totalresourceperconcept${i}`).remove();
