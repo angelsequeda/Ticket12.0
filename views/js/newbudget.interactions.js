@@ -129,7 +129,10 @@ document.getElementById('monthselect').addEventListener('change',()=> {
     document.getElementById('addmonthbutton').hidden = false;
     document.getElementById("conceptcolumnresourcecost").hidden = false;
     document.getElementById("conceptcolumnresourcebalance").hidden = false;
-    document.getElementById("conceptcolumnresultbalance").hidden = false;
+    document.getElementById("containersells").hidden = false;
+    document.getElementById("containercost").hidden = false;
+    document.getElementById("containermargin").hidden = false;
+    document.getElementById("containerpercent").hidden = false;
 
     
     
