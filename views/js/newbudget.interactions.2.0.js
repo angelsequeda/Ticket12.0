@@ -27,6 +27,7 @@ document.getElementById('monthselect').addEventListener('change',()=> {
     document.getElementById("readytable3").hidden = false;
     document.getElementById("table9body").hidden = false;
     document.getElementById("readytable4").hidden = false;
+    document.getElementById("readytable5").hidden = false;
 
     num+= 1
     functionsButtons.addmonthcolumn(document.getElementById("monthselect").value,num,0,0,0,0);
@@ -115,4 +116,8 @@ document.getElementById(`readytable3`).addEventListener('click', ()=> {
 
 document.getElementById("readytable4").addEventListener('click', ()=> {
     functionsButtons.buttonacceptadmincost(rowsinAdmincost,num,rowsinDirectcost);
+})
+
+document.getElementById(`readytable5`).addEventListener('click', ()=> {
+    functionsButtons.buttonacceptresources(rowsinresources,num)
 })
