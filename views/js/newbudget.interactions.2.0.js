@@ -110,9 +110,9 @@ document.getElementById(`readytable2`).addEventListener('click', ()=> {
 })
 
 document.getElementById(`readytable3`).addEventListener('click', ()=> {
-    functionsButtons.buttonacceptdirectcost(rowsinDirectcost,num);
+    functionsButtons.buttonacceptdirectcost(rowsinDirectcost,num,rowsinAdmincost);
 })
 
 document.getElementById("readytable4").addEventListener('click', ()=> {
-    functionsButtons.buttonacceptadmincost(rowsinAdmincost,num);
+    functionsButtons.buttonacceptadmincost(rowsinAdmincost,num,rowsinDirectcost);
 })

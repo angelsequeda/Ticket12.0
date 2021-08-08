@@ -297,7 +297,7 @@ export class functionsButtons {
         this.actualtotalCashflow(columns);
     }
 
-    static buttonacceptdirectcost(rows,columns) {
+    static buttonacceptdirectcost(rows,columns,rowsinadmincost) {
         
 
         for( let j=1; j<=rows; j++) {
@@ -323,8 +323,13 @@ export class functionsButtons {
                 }
             }
             sumtotal+= sumvertical;
+            if (rowsinadmincost >0 ) {
+                document.getElementById(`totalexpensespermonthtable1${j}`).value =Number.parseFloat(document.getElementById(`totalpermonthinputtable4${j}`).value) + sumvertical;
+            }else {
+                document.getElementById(`totalexpensespermonthtable1${j}`).value =  sumvertical;
+            }
             document.getElementById(`totalpermonthinputtable3${j}`).value = sumvertical;
-            document.getElementById(`totalexpensespermonthtable1${j}`).value =Number.parseFloat(document.getElementById(`totalexpensespermonthtable1${j}`).value) + sumvertical;
+            
             
         }
         document.getElementById(`totalexpesenstable1input`).value = sumtotal;
@@ -340,7 +345,7 @@ export class functionsButtons {
         this.actualtotalCashflow(columns);
     }
 
-    static buttonacceptadmincost(rows,columns) {
+    static buttonacceptadmincost(rows,columns,rowsindirectcost) {
         
      
         for( let j=1; j<=rows; j++) {
@@ -366,8 +371,14 @@ export class functionsButtons {
                 }
             }
             sumtotal+= sumvertical;
+            if(rowsindirectcost >0 ){
+                console.log('cool');
+                document.getElementById(`totalexpensespermonthtable1${j}`).value =Number.parseFloat(document.getElementById(`totalpermonthinputtable3${j}`).value) + sumvertical;
+            } else {
+                document.getElementById(`totalexpensespermonthtable1${j}`).value = sumvertical;
+            }
             document.getElementById(`totalpermonthinputtable4${j}`).value = sumvertical;
-            document.getElementById(`totalexpensespermonthtable1${j}`).value =Number.parseFloat(document.getElementById(`totalexpensespermonthtable1${j}`).value) + sumvertical;
+            
             
         }
         document.getElementById(`totalexpesenstable1input`).value = sumtotal;
