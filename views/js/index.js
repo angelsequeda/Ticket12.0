@@ -427,21 +427,25 @@ export class functionsButtons {
             }
             document.getElementById(`totalresourceperconcepttinput${j}`).value = sumvertical;
             document.getElementById(`totalresourcecostperconceptinput${j}`).value = sumvertical2;
+            document.getElementById(`totalresourcebalanceperconceptinput${j}`).value = document.getElementById(`totalresourceperconcepttinput${j}`).value
         }
-        let sumtotal = 0;
         for( let j=1; j<=columns; j++) {
             let sumvertical = 0;
             let sumvertical2 = 0;
             for( let i=1; i<=rows; i++) {
                 try {
                     sumvertical+= Number.parseFloat(document.getElementById(`resourcepercentinput${i}${j}`).value)*Number.parseFloat(document.getElementById(`resourcecostinput${i}${j}`).value)/100;
+                    document.getElementById(`resourcebalanceinput${i}${j}`).value = Number.parseFloat(document.getElementById(`resourcepercentinput${i}${j}`).value)*Number.parseFloat(document.getElementById(`resourcecostinput${i}${j}`).value)/100 ;
+                    resourcebalanceinput11
                     sumvertical2+= Number.parseFloat(document.getElementById(`resourcecostinput${i}${j}`).value);
                 } catch (error) {
                     
                 }
             }
-            sumtotal+= sumvertical;
-            document.getElementById(`totalpermonthinputtable5${j}`).value = sumvertical2;
+            document.getElementById(`totalpermonthinputtable5${j}`).value = sumvertical;
+            document.getElementById(`totalpermonthinputtable6${j}`).value = sumvertical2;
+            document.getElementById(`totalpermonthinputtable7${j}`).value = document.getElementById(`totalpermonthinputtable5${j}`).value
+            
             
             
         }
