@@ -93,6 +93,7 @@ document.getElementById("addrowtable4").addEventListener("click", ()=> {
     functionsButtons.addrowsadmincost(rowsinAdmincost,num);
     document.getElementById(`buttondeleteadmincost${rowsinAdmincost}`).addEventListener('click',()=> {
         
+        functionsButtons.deleteadmincostrow(rowsinAdmincost,num);
         rowsinAdmincost-=1;
         
     })
@@ -103,6 +104,7 @@ document.getElementById("addrowtable5").addEventListener("click", ()=> {
 
     rowsinresources +=1 ;
     functionsButtons.addrowsresources(rowsinresources,num);
+    
 })
 
 

@@ -385,12 +385,12 @@ export class functionsButtons {
         this.actualtotalCashflow(columns);
     }
 
-    static deletedirectcostrow(rows,columns) {
+    static deleteadmincostrow(rows,columns) {
         for( let i=1; i<=columns; i++) {
-            document.getElementById(`totalexpensespermonthtable1${i}`).value = Number.parseFloat(document.getElementById(`totalexpensespermonthtable1${i}`).value)-Number.parseFloat(document.getElementById(`directcostinput${rows}${i}`).value)
+            document.getElementById(`totalexpensespermonthtable1${i}`).value = Number.parseFloat(document.getElementById(`totalexpensespermonthtable1${i}`).value)-Number.parseFloat(document.getElementById(`admincostinput${rows}${i}`).value)
         }
-        document.getElementById(`direccostrow${rows}`).remove();
-        this.buttonacceptdirectcost(rows-1,columns)
+        document.getElementById(`admincostrow${rows}`).remove();
+        this.buttonacceptadmincost(rows-1,columns)
         this.actualtotalCashflow(columns);
     }
 
@@ -416,15 +416,30 @@ export class functionsButtons {
         document.getElementById(`totalcosttable8`).value = document.getElementById(`totalexpesenstable1input`).value;
         document.getElementById(`totalmargintable8`).value = sumtotal;
         if (Number.parseFloat(document.getElementById(`totalearningstable1input`).value)%1 === 0) {
-            document.getElementById(`resumesells`).value ="$ "+ document.getElementById(`totalearningstable1input`).value + ".00"
+            document.getElementById(`resumesells`).value ="$ "+ document.getElementById(`totalearningstable1input`).value; + ".00"
         } else {
-            document.getElementById(`resumesells`).value ="$ "+ document.getElementById(`totalearningstable1input`).value
+            document.getElementById(`resumesells`).value ="$ "+ document.getElementById(`totalearningstable1input`).value;
         }
 
         if (Number.parseFloat(document.getElementById(`totalexpesenstable1input`).value)%1 === 0) {
-            document.getElementById(`resumecost`).value ="$ "+ document.getElementById(`totalexpesenstable1input`).value + ".00"
+            document.getElementById(`resumecost`).value ="$ "+ document.getElementById(`totalexpesenstable1input`).value; + ".00"
         } else {
-            document.getElementById(`resumecost`).value ="$ "+ document.getElementById(`totalexpesenstable1input`).value
+            document.getElementById(`resumecost`).value ="$ "+ document.getElementById(`totalexpesenstable1input`).value;
+        }
+
+        if (Number.parseFloat(document.getElementById(`totalmargintable8`).value)%1 === 0) {
+            document.getElementById(`resumemargin`).value ="$ "+ document.getElementById(`totalmargintable8`).value + ".00";
+        } else {
+            document.getElementById(`resumemargin`).value ="$ "+ document.getElementById(`totalmargintable8`).value;
+        }
+
+        if (Number.parseFloat(document.getElementById(`totalmargintable8`).value) < 0) {
+            document.getElementById(`resumemargin`).style = "color: red";
+        }
+        if( Number.parseFloat(document.getElementById(`totalmargintable8`).value) !== 0 && Number.parseFloat(document.getElementById(`totalearningstable1input`).value ) !== 0)  {
+            document.getElementById(`resumepercent`).value = 100*(Number.parseFloat(document.getElementById(`totalmargintable8`).value) / Number.parseFloat(document.getElementById(`totalearningstable1input`).value)) + "%";
+        } else {
+            document.getElementById(`resumepercent`).value = "0 % ";
         }
         
     } 
