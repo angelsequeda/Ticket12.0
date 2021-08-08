@@ -23,8 +23,10 @@ document.getElementById('monthselect').addEventListener('change',()=> {
     }
     }
     
+    document.getElementById("table9body").hidden = false;
+    
     num+= 1
-    functionsButtons.addmonthcolumn(document.getElementById("monthselect").value,num,rowsinEarnings,0,0,0,0,0,0);
+    functionsButtons.addmonthcolumn(document.getElementById("monthselect").value,num,0,0,0,0);
     document.getElementById("monthselect").disabled = true;
     months3.push(document.getElementById('monthselect').value);
     
@@ -48,10 +50,10 @@ document.getElementById(`addcolumntable1`).addEventListener('click', ()=> {
 
         months2=months;
         months2=months2.slice(1);
-        functionsButtons.addmonthcolumn(months2[0],num,rowsinEarnings,rowsinDirectcost,rowsinAdmincost,rowsinresources,rowsinresources,rowsinresources,rowsinresources);
+        functionsButtons.addmonthcolumn(months2[0],num,rowsinEarnings,rowsinDirectcost,rowsinAdmincost,rowsinresources);
 
     }else {
-        functionsButtons.addmonthcolumn(months2[0],num,rowsinEarnings,rowsinDirectcost,rowsinAdmincost,rowsinresources,rowsinresources,rowsinresources,rowsinresources);
+        functionsButtons.addmonthcolumn(months2[0],num,rowsinEarnings,rowsinDirectcost,rowsinAdmincost,rowsinresources);
         
         months2=months2.slice(1);
     }
@@ -61,6 +63,7 @@ document.getElementById("addrowtable2").addEventListener('click', ()=> {
 
     rowsinEarnings += 1;
     functionsButtons.addrowearnings(rowsinEarnings,num);
+    
 
 })
 
@@ -68,10 +71,18 @@ document.getElementById("addrowtable3").addEventListener("click", ()=> {
 
     rowsinDirectcost+=1;
     functionsButtons.addrowdirectcost(rowsinDirectcost,num);
+    
 })
 
 document.getElementById("addrowtable4").addEventListener("click", ()=> {
     
     rowsinAdmincost += 1;
     functionsButtons.addrowsadmincost(rowsinAdmincost,num);
+})
+
+
+document.getElementById("addrowtable5").addEventListener("click", ()=> {
+
+    rowsinresources +=1 ;
+    functionsButtons.addrowsresources(rowsinresources,num);
 })
