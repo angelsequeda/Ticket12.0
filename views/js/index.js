@@ -233,7 +233,7 @@ export class functionsButtons {
     }
 
     static addrowsadmincost(rows,columns) {
-        document.getElementById(`table4totalfile`).insertAdjacentHTML("beforebegin",`<tr id="admincostrow${rows}"><td id="conceptadmincost${rows}"><input id="conceptadmincostinput${rows}" type="text" ></td><td id="totaladmincostperconcept${rows}"><input type="text" id="totaladmincostperconceptinput${rows}" disabled value="0"></td><td><button type="button" class="btn btn-success" id="buttonacceptadmincost${rows}">OK</button><button type="button" class="btn btn-danger" id="buttondeleteadmincost${rows}">Borrar</button></td></tr>`);
+        document.getElementById(`table4totalfile`).insertAdjacentHTML("beforebegin",`<tr id="admincostrow${rows}"><td id="conceptadmincost${rows}"><input id="conceptadmincostinput${rows}" type="text" ></td><td id="totaladmincostperconcept${rows}"><input type="text" id="totaladmincostperconceptinput${rows}" disabled value="0"></td><td><button type="button" class="btn btn-danger" id="buttondeleteadmincost${rows}">Borrar</button></td></tr>`);
         
         for (let index = 1; index <= columns; index++) {
             document.getElementById(`totaladmincostperconcept${rows}`).insertAdjacentHTML("beforebegin",`<td id="admincost${rows}${index}"><input type="text" id="admincostinput${rows}${index}" value="0"></td>`);
@@ -256,7 +256,7 @@ export class functionsButtons {
 
     static buttonsacceptearnings(rows,columns) {
         
-        let sumhorizontal = 0;
+     
         for( let j=1; j<=rows; j++) {
             let sumvertical = 0;
 
@@ -281,7 +281,7 @@ export class functionsButtons {
             }
             sumtotal+= sumvertical;
             document.getElementById(`totalpermonthinputtable2${j}`).value = sumvertical;
-            document.getElementById(`totalearningspermonthtable1${j}`).value = sumvertical;
+            document.getElementById(`totalearningspermonthtable1${j}`).value =Number.parseFloat(document.getElementById(`totalearningspermonthtable1${j}`).value) + sumvertical;
             
         }
         document.getElementById(`totalearningstable1input`).value = sumtotal;
@@ -299,7 +299,7 @@ export class functionsButtons {
 
     static buttonacceptdirectcost(rows,columns) {
         
-        let sumhorizontal = 0;
+
         for( let j=1; j<=rows; j++) {
             let sumvertical = 0;
 
@@ -324,7 +324,50 @@ export class functionsButtons {
             }
             sumtotal+= sumvertical;
             document.getElementById(`totalpermonthinputtable3${j}`).value = sumvertical;
-            document.getElementById(`totalexpensespermonthtable1${j}`).value = sumvertical;
+            document.getElementById(`totalexpensespermonthtable1${j}`).value =Number.parseFloat(document.getElementById(`totalexpensespermonthtable1${j}`).value) + sumvertical;
+            
+        }
+        document.getElementById(`totalexpesenstable1input`).value = sumtotal;
+        this.actualtotalCashflow(columns);
+    }
+
+    static deletedirectcostrow(rows,columns) {
+        for( let i=1; i<=columns; i++) {
+            document.getElementById(`totalexpensespermonthtable1${i}`).value = Number.parseFloat(document.getElementById(`totalexpensespermonthtable1${i}`).value)-Number.parseFloat(document.getElementById(`directcostinput${rows}${i}`).value)
+        }
+        document.getElementById(`direccostrow${rows}`).remove();
+        this.buttonacceptdirectcost(rows-1,columns);
+        this.actualtotalCashflow(columns);
+    }
+
+    static buttonacceptadmincost(rows,columns) {
+        
+     
+        for( let j=1; j<=rows; j++) {
+            let sumvertical = 0;
+
+            for( let i=1; i<=columns; i++) {
+                try {
+                    sumvertical+= Number.parseFloat(document.getElementById(`admincostinput${j}${i}`).value);
+                } catch (error) {
+                    
+                }
+            }
+            document.getElementById(`totaladmincostperconceptinput${j}`).value = sumvertical;
+        }
+        let sumtotal = 0;
+        for( let j=1; j<=columns; j++) {
+            let sumvertical = 0;
+            for( let i=1; i<=rows; i++) {
+                try {
+                    sumvertical+= Number.parseFloat(document.getElementById(`admincostinput${i}${j}`).value);
+                } catch (error) {
+                    
+                }
+            }
+            sumtotal+= sumvertical;
+            document.getElementById(`totalpermonthinputtable4${j}`).value = sumvertical;
+            document.getElementById(`totalexpensespermonthtable1${j}`).value =Number.parseFloat(document.getElementById(`totalexpensespermonthtable1${j}`).value) + sumvertical;
             
         }
         document.getElementById(`totalexpesenstable1input`).value = sumtotal;
