@@ -402,9 +402,32 @@ export class functionsButtons {
             if (i>1) {
                 document.getElementById(`totalacumulatedpermonthtable1${i}`).value = Number.parseFloat(document.getElementById(`totaltotalpermonthtable1${i}`).value) + Number.parseFloat(document.getElementById(`totalacumulatedpermonthtable1${i-1}`).value)
             } 
+            document.getElementById(`totalsales${i}`).value = document.getElementById(`totalpermonthinputtable2${i}`).value;
+            document.getElementById(`totalcost${i}`).value = document.getElementById(`totalexpensespermonthtable1${i}`).value;
+            document.getElementById(`totalmargin${i}`).value =  document.getElementById(`totaltotalpermonthtable1${i}`).value 
+            if(Number.parseFloat(document.getElementById(`totalmargin${i}`).value) < 0) {
+                document.getElementById(`totalmargin${i}`).style = "color: red"
+            }
+            
+            
         }
         document.getElementById(`totaltotaltable1input`).value= sumtotal;
-    }
+        document.getElementById(`totalsalestable8`).value = document.getElementById(`totalearningstable1input`).value;
+        document.getElementById(`totalcosttable8`).value = document.getElementById(`totalexpesenstable1input`).value;
+        document.getElementById(`totalmargintable8`).value = sumtotal;
+        if (Number.parseFloat(document.getElementById(`totalearningstable1input`).value)%1 === 0) {
+            document.getElementById(`resumesells`).value ="$ "+ document.getElementById(`totalearningstable1input`).value + ".00"
+        } else {
+            document.getElementById(`resumesells`).value ="$ "+ document.getElementById(`totalearningstable1input`).value
+        }
+
+        if (Number.parseFloat(document.getElementById(`totalexpesenstable1input`).value)%1 === 0) {
+            document.getElementById(`resumecost`).value ="$ "+ document.getElementById(`totalexpesenstable1input`).value + ".00"
+        } else {
+            document.getElementById(`resumecost`).value ="$ "+ document.getElementById(`totalexpesenstable1input`).value
+        }
+        
+    } 
 
     static buttonacceptresources(rows,columns) {
         
@@ -449,10 +472,8 @@ export class functionsButtons {
             
             
         }
-        //document.getElementById(`totalearningstable1input`).value = sumtotal;
-        //this.actualtotalCashflow(columns);
     }
 
-    actualtotal
+    
 }
 
