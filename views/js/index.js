@@ -224,7 +224,7 @@ export class functionsButtons {
     }
 
     static addrowdirectcost(rows,columns) {
-        document.getElementById(`table3totalfile`).insertAdjacentHTML("beforebegin",`<tr id="direccostrow${rows}"><td id="conceptdirectcost${rows}"><input id="conceptdirectcostinput${rows}" type="text" ></td><td id="totaldirectcostperconcept${rows}"><input type="text" id="totaldirectcostperconceptinput${rows}" disabled value="0"></td><td><button type="button" class="btn btn-success" id="buttonacceptdirectcost${rows}">OK</button><button type="button" class="btn btn-danger" id="buttondeletedirectcost${rows}">Borrar</button></td>></tr>`);
+        document.getElementById(`table3totalfile`).insertAdjacentHTML("beforebegin",`<tr id="direccostrow${rows}"><td id="conceptdirectcost${rows}"><input id="conceptdirectcostinput${rows}" type="text" ></td><td id="totaldirectcostperconcept${rows}"><input type="text" id="totaldirectcostperconceptinput${rows}" disabled value="0"></td><td><button type="button" class="btn btn-danger" id="buttondeletedirectcost${rows}">Borrar</button></td></tr>`);
         
         for (let index = 1; index <= columns; index++) {
             document.getElementById(`totaldirectcostperconcept${rows}`).insertAdjacentHTML("beforebegin",`<td id="directcost${rows}${index}"><input type="text" id="directcostinput${rows}${index}" value="0"></td>`);
@@ -285,6 +285,7 @@ export class functionsButtons {
             
         }
         document.getElementById(`totalearningstable1input`).value = sumtotal;
+        this.actualtotalCashflow(columns);
     }
 
     static deleteearningrow(rows,columns) {
@@ -292,7 +293,63 @@ export class functionsButtons {
             document.getElementById(`totalearningspermonthtable1${i}`).value = Number.parseFloat(document.getElementById(`totalearningspermonthtable1${i}`).value)-Number.parseFloat(document.getElementById(`earningsinput${rows}${i}`).value)
         }
         document.getElementById(`earningrow${rows}`).remove();
-        this.buttonsacceptearnings(rows-1,columns)
+        this.buttonsacceptearnings(rows-1,columns);
+        this.actualtotalCashflow(columns);
+    }
+
+    static buttonacceptdirectcost(rows,columns) {
+        
+        let sumhorizontal = 0;
+        for( let j=1; j<=rows; j++) {
+            let sumvertical = 0;
+
+            for( let i=1; i<=columns; i++) {
+                try {
+                    sumvertical+= Number.parseFloat(document.getElementById(`directcostinput${j}${i}`).value);
+                } catch (error) {
+                    
+                }
+            }
+            document.getElementById(`totaldirectcostperconceptinput${j}`).value = sumvertical;
+        }
+        let sumtotal = 0;
+        for( let j=1; j<=columns; j++) {
+            let sumvertical = 0;
+            for( let i=1; i<=rows; i++) {
+                try {
+                    sumvertical+= Number.parseFloat(document.getElementById(`directcostinput${i}${j}`).value);
+                } catch (error) {
+                    
+                }
+            }
+            sumtotal+= sumvertical;
+            document.getElementById(`totalpermonthinputtable3${j}`).value = sumvertical;
+            document.getElementById(`totalexpensespermonthtable1${j}`).value = sumvertical;
+            
+        }
+        document.getElementById(`totalexpesenstable1input`).value = sumtotal;
+        this.actualtotalCashflow(columns);
+    }
+
+    static deletedirectcostrow(rows,columns) {
+        for( let i=1; i<=columns; i++) {
+            document.getElementById(`totalexpensespermonthtable1${i}`).value = Number.parseFloat(document.getElementById(`totalexpensespermonthtable1${i}`).value)-Number.parseFloat(document.getElementById(`directcostinput${rows}${i}`).value)
+        }
+        document.getElementById(`direccostrow${rows}`).remove();
+        this.buttonacceptdirectcost(rows-1,columns)
+        this.actualtotalCashflow(columns);
+    }
+
+    static actualtotalCashflow(columns) {
+        let sumtotal = 0;
+        for(let i = 1; i<=columns; i++){
+            document.getElementById(`totaltotalpermonthtable1${i}`).value = Number.parseFloat(document.getElementById(`totalearningspermonthtable1${i}`).value)-Number.parseFloat(document.getElementById(`totalexpensespermonthtable1${i}`).value);
+            sumtotal+= Number.parseFloat(document.getElementById(`totaltotalpermonthtable1${i}`).value);
+            if (i>1) {
+                document.getElementById(`totalacumulatedpermonthtable1${i}`).value = Number.parseFloat(document.getElementById(`totaltotalpermonthtable1${i}`).value) + Number.parseFloat(document.getElementById(`totalacumulatedpermonthtable1${i-1}`).value)
+            } 
+        }
+        document.getElementById(`totaltotaltable1input`).value= sumtotal;
     }
 
 }

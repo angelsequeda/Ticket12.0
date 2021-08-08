@@ -24,7 +24,7 @@ document.getElementById('monthselect').addEventListener('change',()=> {
         }
     }
     document.getElementById("readytable2").hidden = false;
-    
+    document.getElementById("readytable3").hidden = false;
     document.getElementById("table9body").hidden = false;
     
     num+= 1
@@ -77,6 +77,11 @@ document.getElementById("addrowtable3").addEventListener("click", ()=> {
 
     rowsinDirectcost+=1;
     functionsButtons.addrowdirectcost(rowsinDirectcost,num);
+    document.getElementById(`buttondeletedirectcost${rowsinDirectcost}`).addEventListener('click',()=> {
+        functionsButtons.deletedirectcostrow(rowsinDirectcost,num);
+        rowsinDirectcost-=1;
+        
+    })
     
 })
 
@@ -98,3 +103,6 @@ document.getElementById(`readytable2`).addEventListener('click', ()=> {
     functionsButtons.buttonsacceptearnings(rowsinEarnings,num);
 })
 
+document.getElementById(`readytable3`).addEventListener('click', ()=> {
+    functionsButtons.buttonacceptdirectcost(rowsinDirectcost,num);
+})
