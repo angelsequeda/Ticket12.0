@@ -173,4 +173,32 @@ export class functionsButtons {
         })
         return [resultvertical,resulthorizontal];
     }
+
+    static addmonthcolumn(month,num) {
+        for (let i = 1; i <= 8; i++) {
+            document.getElementById(`table${i}totalhead`).insertAdjacentHTML("beforebegin",`<th id="monthheadtable${i}${num}
+            ">${month}</th>`);
+            if (i < 9 && i>1) {
+                document.getElementById(`table${i}totalfile`).insertAdjacentHTML("beforeend",`<td id=totalpermonthtable${i}${num}><input disabled id="totalpermonthinputtable${i}${num}"></td>`)
+            }
+        }
+        
+        document.getElementById(`totalearningstable1`).insertAdjacentHTML("beforebegin",`<td id="totalearningstable1${num}"><input disabled type="text" id="totalearningspermonthtable1${num}"> </td>`);
+        document.getElementById(`totalexpensestable1`).insertAdjacentHTML("beforebegin",`<td id="totalearningstable1${num}"><input disabled type="text" id="totalexpensespermonthtable1${num}"> </td>`);
+        document.getElementById(`totalacumulatedtable1`).insertAdjacentHTML("beforebegin",`<td id="totalearningstable1${num}"><input disabled type="text" id="totalacumulatedpermonthtable1${num}"> </td>`);
+        document.getElementById(`totaltotaltable1`).insertAdjacentHTML("beforebegin",`<td id="totaltotaltable1${num}"><input disabled type="text" id="totaltotalpermonthtable1${num}"> </td>`);
+
+    }
+
+    static addrowearnings(rows,columns) {
+        document.getElementById(`table2totalfile`).insertAdjacentHTML("beforebegin",`<tr id="earningrow${rows}"><td id="conceptearnings${rows}"><input id="conceptearningsinput${rows}" type="text"></td></tr>`);
+        if (rows === 1 && columns < 2) {
+            document.getElementById(``)
+        }
+        for (let index = 1; index <= columns; index++) {
+            document.getElementById(`conceptearnings${rows}`).insertAdjacentHTML("afterend",`<td id="earnings${rows}${index}"><input type="text" id="earningsinput${rows}${index}"></td>`);
+            
+        }
+    }
 }
+
