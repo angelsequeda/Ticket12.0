@@ -184,11 +184,6 @@ export class functionsButtons {
         if (rows1 > 0) {
             for (let index = 1; index <= rows1; index++) {
                 document.getElementById(`totalearningsperconcept${index}`).insertAdjacentHTML('beforebegin',`<td id= "earnings${index}${num}"><input type="text" id="earningsinput${index}${num}" value="0"></td>`);
-                document.getElementById(`buttonacceptearning${index}`).removeEventListener('click',()=> {
-                })
-                document.getElementById(`buttonacceptearning${index}`).addEventListener('click', ()=> {
-                    this.buttonsacceptearnings(index,num);
-                });
             }
         }
 
@@ -218,22 +213,13 @@ export class functionsButtons {
     }
 
     static addrowearnings(rows,columns) {
-        document.getElementById(`table2totalfile`).insertAdjacentHTML("beforebegin",`<tr id="earningrow${rows}"><td id="conceptearnings${rows}"><input id="conceptearningsinput${rows}" type="text" ></td><td id="totalearningsperconcept${rows}"><input type="text" id="totalearningsperconceptinput${rows}" disabled value="0"></td><td><button type="button" class="btn btn-success" id="buttonacceptearning${rows}">OK</button><button type="button" class="btn btn-danger" id="buttondeleteearning${rows}">Borrar</button></td></tr>`);
+        document.getElementById(`table2totalfile`).insertAdjacentHTML("beforebegin",`<tr id="earningrow${rows}"><td id="conceptearnings${rows}"><input id="conceptearningsinput${rows}" type="text" ></td><td id="totalearningsperconcept${rows}"><input type="text" id="totalearningsperconceptinput${rows}" disabled value="0"></td><td><button type="button" class="btn btn-danger" id="buttondeleteearning${rows}">Borrar</button></td></tr>`);
         
         for (let index = 1; index <= columns; index++) {
-            document.getElementById(`totalearningsperconcept${rows}`).insertAdjacentHTML("beforebegin",`<td id="earnings${rows}${index}"><input type="text" id="earningsinput${rows}${index}" value="0"></td>`);
-            
+            document.getElementById(`totalearningsperconcept${rows}`).insertAdjacentHTML("beforebegin",`<td id="earnings${rows}${index}"><input type="text" id="earningsinput${rows}${index}" value="0" ></td>`);
             
         }
-        if (columns > 1) {
-            document.getElementById(`buttonacceptearning${rows}`).removeEventListener('click',()=> {
 
-            })
-        }
-        document.getElementById(`buttonacceptearning${rows}`).addEventListener('click', ()=> {
-            this.buttonsacceptearnings(rows,columns);
-        });
-        
 
     }
 
@@ -269,17 +255,44 @@ export class functionsButtons {
     }
 
     static buttonsacceptearnings(rows,columns) {
-        let table = document.getElementById('table2');
-        for( let j=1; j<=columns; j++){
-            let sumahorizontal = 0;
-            for(let i = 1; i<= rows; i++) {
-                sumahorizontal+= Number.parseFloat(document.getElementById(`earningsinput${i}${j}`).value);
-                document.getElementById(`earningsinput${i}${j}`).disabled = true;
-            }
-            document.getElementById(`totalpermonthinputtable2${j}`).value = sumahorizontal;
-            document.getElementById(`totalearningspermonthtable1${j}`).value = sumahorizontal;
-        }
+        
+        let sumhorizontal = 0;
+        for( let j=1; j<=rows; j++) {
+            let sumvertical = 0;
 
+            for( let i=1; i<=columns; i++) {
+                try {
+                    sumvertical+= Number.parseFloat(document.getElementById(`earningsinput${j}${i}`).value);
+                } catch (error) {
+                    
+                }
+            }
+            document.getElementById(`totalearningsperconceptinput${j}`).value = sumvertical;
+        }
+        let sumtotal = 0;
+        for( let j=1; j<=columns; j++) {
+            let sumvertical = 0;
+            for( let i=1; i<=rows; i++) {
+                try {
+                    sumvertical+= Number.parseFloat(document.getElementById(`earningsinput${i}${j}`).value);
+                } catch (error) {
+                    
+                }
+            }
+            sumtotal+= sumvertical;
+            document.getElementById(`totalpermonthinputtable2${j}`).value = sumvertical;
+            document.getElementById(`totalearningspermonthtable1${j}`).value = sumvertical;
+            
+        }
+        document.getElementById(`totalearningstable1input`).value = sumtotal;
+    }
+
+    static deleteearningrow(rows,columns) {
+        for( let i=1; i<=columns; i++) {
+            document.getElementById(`totalearningspermonthtable1${i}`).value = Number.parseFloat(document.getElementById(`totalearningspermonthtable1${i}`).value)-Number.parseFloat(document.getElementById(`earningsinput${rows}${i}`).value)
+        }
+        document.getElementById(`earningrow${rows}`).remove();
+        this.buttonsacceptearnings(rows-1,columns)
     }
 
 }

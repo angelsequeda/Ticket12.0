@@ -20,8 +20,10 @@ document.getElementById('monthselect').addEventListener('change',()=> {
             document.getElementById(`addcolumntable1`).hidden = false;
         } else if(i<=5){
             document.getElementById(`addrowtable${i}`).hidden = false;
+            
+        }
     }
-    }
+    document.getElementById("readytable2").hidden = false;
     
     document.getElementById("table9body").hidden = false;
     
@@ -63,7 +65,11 @@ document.getElementById("addrowtable2").addEventListener('click', ()=> {
 
     rowsinEarnings += 1;
     functionsButtons.addrowearnings(rowsinEarnings,num);
-    
+    document.getElementById(`buttondeleteearning${rowsinEarnings}`).addEventListener('click',()=> {
+        functionsButtons.deleteearningrow(rowsinEarnings,num);
+        rowsinEarnings-=1;
+        
+    })
 
 })
 
@@ -86,3 +92,9 @@ document.getElementById("addrowtable5").addEventListener("click", ()=> {
     rowsinresources +=1 ;
     functionsButtons.addrowsresources(rowsinresources,num);
 })
+
+
+document.getElementById(`readytable2`).addEventListener('click', ()=> {
+    functionsButtons.buttonsacceptearnings(rowsinEarnings,num);
+})
+
