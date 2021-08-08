@@ -174,7 +174,7 @@ export class functionsButtons {
         return [resultvertical,resulthorizontal];
     }
 
-    static addmonthcolumn(month,num) {
+    static addmonthcolumn(month,num,rows1,rows2,rows3,rows4,rows5,rows6,rows7) {
         for (let i = 1; i <= 8; i++) {
             document.getElementById(`table${i}totalhead`).insertAdjacentHTML("beforebegin",`<th id="monthheadtable${i}${num}
             ">${month}</th>`);
@@ -182,23 +182,65 @@ export class functionsButtons {
                 document.getElementById(`table${i}totalfile`).insertAdjacentHTML("beforeend",`<td id=totalpermonthtable${i}${num}><input disabled id="totalpermonthinputtable${i}${num}"></td>`)
             }
         }
+
         
         document.getElementById(`totalearningstable1`).insertAdjacentHTML("beforebegin",`<td id="totalearningstable1${num}"><input disabled type="text" id="totalearningspermonthtable1${num}"> </td>`);
         document.getElementById(`totalexpensestable1`).insertAdjacentHTML("beforebegin",`<td id="totalearningstable1${num}"><input disabled type="text" id="totalexpensespermonthtable1${num}"> </td>`);
         document.getElementById(`totalacumulatedtable1`).insertAdjacentHTML("beforebegin",`<td id="totalearningstable1${num}"><input disabled type="text" id="totalacumulatedpermonthtable1${num}"> </td>`);
         document.getElementById(`totaltotaltable1`).insertAdjacentHTML("beforebegin",`<td id="totaltotaltable1${num}"><input disabled type="text" id="totaltotalpermonthtable1${num}"> </td>`);
 
+        if (rows1 > 0) {
+            for (let index = 1; index <= rows1; index++) {
+                document.getElementById(`totalearningsperconcept${index}`).insertAdjacentHTML('beforebegin',`<td id= "earnings${index}${num}"><input type="text" id="earningsinput${index}${num}"></td>`)
+                
+            }
+        }
+
+        if (rows2 > 0) {
+            for (let index = 1; index <= rows2; index++) {
+                document.getElementById(`totaldirectcostperconcept${index}`).insertAdjacentHTML('beforebegin',`<td id= "earnings${index}${num}"><input type="text" id="directcostinput${index}${num}"></td>`)
+                
+            }            
+        }
+
+        if (rows3 > 0) {
+            for (let index = 1; index <= rows2; index++) {
+                document.getElementById(`totaladmincostperconcept${index}`).insertAdjacentHTML("beforebegin",`<td id="admincost${index}${num}"><input type="text" id="admincostinput${index}${num}"></td>`);
+                
+            } 
+        }
+        
     }
 
     static addrowearnings(rows,columns) {
-        document.getElementById(`table2totalfile`).insertAdjacentHTML("beforebegin",`<tr id="earningrow${rows}"><td id="conceptearnings${rows}"><input id="conceptearningsinput${rows}" type="text"></td></tr>`);
-        if (rows === 1 && columns < 2) {
-            document.getElementById(``)
-        }
+        document.getElementById(`table2totalfile`).insertAdjacentHTML("beforebegin",`<tr id="earningrow${rows}"><td id="conceptearnings${rows}"><input id="conceptearningsinput${rows}" type="text"></td><td id="totalearningsperconcept${rows}"><input type="text" id="totalearningsperconceptinput${rows}" disabled></td></tr>`);
+        
         for (let index = 1; index <= columns; index++) {
-            document.getElementById(`conceptearnings${rows}`).insertAdjacentHTML("afterend",`<td id="earnings${rows}${index}"><input type="text" id="earningsinput${rows}${index}"></td>`);
+            document.getElementById(`totalearningsperconcept${rows}`).insertAdjacentHTML("beforebegin",`<td id="earnings${rows}${index}"><input type="text" id="earningsinput${rows}${index}"></td>`);
             
         }
+    }
+
+    static addrowdirectcost(rows,columns) {
+        document.getElementById(`table3totalfile`).insertAdjacentHTML("beforebegin",`<tr id="direccostrow${rows}"><td id="conceptdirectcost${rows}"><input id="conceptdirectcostinput${rows}" type="text"></td><td id="totaldirectcostperconcept${rows}"><input type="text" id="totaldirectcostperconceptinput${rows}" disabled></td></tr>`);
+        
+        for (let index = 1; index <= columns; index++) {
+            document.getElementById(`totaldirectcostperconcept${rows}`).insertAdjacentHTML("beforebegin",`<td id="directcost${rows}${index}"><input type="text" id="directcostinput${rows}${index}"></td>`);
+            
+        }
+    }
+
+    static addrowsadmincost(rows,columns) {
+        document.getElementById(`table4totalfile`).insertAdjacentHTML("beforebegin",`<tr id="admincostrow${rows}"><td id="conceptadmincost${rows}"><input id="conceptadmincostinput${rows}" type="text"></td><td id="totaladmincostperconcept${rows}"><input type="text" id="totaladmincostperconceptinput${rows}" disabled></td></tr>`);
+        
+        for (let index = 1; index <= columns; index++) {
+            document.getElementById(`totaladmincostperconcept${rows}`).insertAdjacentHTML("beforebegin",`<td id="admincost${rows}${index}"><input type="text" id="admincostinput${rows}${index}"></td>`);
+            
+        }
+    }
+
+    static addrowsresources(rows,columns) {
+        document.getElementById(`table5totalfile`).insertAdjacentElement("beforebegin",`<tr id="resourcesrow${rows}"><td id="resourcesconcept${rows}"><input id="resourcesconceptinput${rows}" type="text"></td><td id="totalresourceperconcept${rows}"><input type="text" id="totalresourceperconcepttinput${rows}" disabled></td></tr>`)
     }
 }
 
