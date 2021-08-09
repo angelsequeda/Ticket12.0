@@ -47,10 +47,11 @@ const deleteBudget = async(data) => {
 }
 
 
+
 const addNewBudgetService = async(data) => {
 
-    try {
         let today = date().toDate();
+
         await budgetModel.create({id_presupuesto:data.budget.id_presupuesto, proyecto:data.budget.proyecto,creado_en:today,version: 1, activo: 1 }).then(()=> {
             if( data.earnings && data.earnings.length > 0 ) {
                 
@@ -79,14 +80,6 @@ const addNewBudgetService = async(data) => {
             };
 
         })
-    } catch (error) {
-        console.log(error.message);
-        throw new Error('Error al agregar registro [SERVICE]')
-    }
-    
-
-    
-
     
 
 }

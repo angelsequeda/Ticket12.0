@@ -13,12 +13,16 @@ app.use(express.urlencoded({extended:true}));
 app.use(cors());
 
 
+//Abrimos el navegador
+
+
 //Inicio de servidor
 
 app.listen(process.env.port, async ()=> {
     try {
         console.log('STATUS CORRECTO [SERVIDOR]');
         await sequelize.authenticate();
+        
         
     } catch (error) {
         console.log(error.message);
