@@ -139,3 +139,8 @@ document.getElementById("buttonfinalsave").addEventListener('click',()=> {
         functionsButtons.saveEverythingandrun(rowsinEarnings,rowsinDirectcost,rowsinAdmincost,rowsinresources,num);
     }
 })
+
+document.getElementById("buttonfinalcancel").addEventListener('click', ()=> {
+
+    window.open("../html/indexbudgin.html","_self");
+})

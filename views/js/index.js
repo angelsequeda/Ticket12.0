@@ -1,3 +1,4 @@
+import { Budget } from "./classes.js";
 
 export class frontValidations {
 
@@ -74,6 +75,7 @@ export class Renderizer {
             file.appendChild(newcolumn2);
             file.appendChild(newcolumn3);
             table.appendChild(file);
+
         });
     }
 
@@ -95,67 +97,9 @@ export class Renderizer {
 }
 
 
-export class renderTablesBudget {
 
 
-    static cashflowrows() {
 
-        let info = ['Ingresos','Egresos','Total','Acumulado'];
-        info.forEach(element => {
-            let newfile = document.createElement('tr');
-            newfile.id = element;
-            newfile.textContent = element;
-            document.getElementById("flowcashtbody").appendChild(newfile);
-        });
-
-    }
-
-    static cashflowcolumns(data,num) {
-        document.getElementById('cashflowrowthead').insertAdjacentHTML("beforeend",`<th id='${data}monthrowcashflow${num}'>${data}</th>`);
-        document.getElementById('Ingresos').insertAdjacentHTML("beforeend",`<td><input type='text' id=earningsinputcashflow${num} disabled></td>`);
-        document.getElementById('Egresos').insertAdjacentHTML("beforeend",`<td><input type='text' id=costinputcashflow${num} disabled></td>`);
-        document.getElementById('Total').insertAdjacentHTML("beforeend",`<td><input type='text' id=totalinputcashflow${num} disabled></td>`);
-        document.getElementById('Acumulado').insertAdjacentHTML("beforeend",`<td><input type='text' id=acumuladoinputcashflow${num} disabled></td>`);
-        document.getElementById('earningsthead').insertAdjacentHTML("beforeend",`<th id='${data}monthrowearnings${num}'>${data}</th>`);
-        document.getElementById('directcosthead').insertAdjacentHTML("beforeend",`<th id='${data}monthrowdirectcost${num}'>${data}<input type="checkbox" id="directcolumnforcalculusdirectcost${num}" disabled></th>`);
-        document.getElementById('admincosthead').insertAdjacentHTML("beforeend",`<th id='${data}monthrowadmincost${num}'>${data}</th>`);
-        document.getElementById('resourcesthead').insertAdjacentHTML("beforeend",`<th id='${data}monthrowresources${num}'>${data}</th>`);
-        document.getElementById('resourcescosthead').insertAdjacentHTML("beforeend",`<th id='${data}monthresourcecost${num}'>${data}</th>`);
-        document.getElementById('resourcebalancethead').insertAdjacentHTML("beforeend",`<th id='${data}monthresourcecost${num}'>${data}</th>`);
-        
-    }
-    
-    static createbuttons(name) {
-        
-        let butttonFreeedit = `<button type= "button" style="margin=left:1px" class= "btn btn-primary" id="butttonFreeedit${name}">Edit</button>`;
-        let buttonSumatory = `<button type= "button" style="margin=left:1px" class= "btn btn-primary" id="buttonSumatory${name}">Sumar</button>`;
-        let buttonPercent = `<button type= "button" class= "btn btn-primary" id="buttonPercent${name}">%</button>`
-        
-        document.getElementById(name).insertAdjacentHTML('beforeend',butttonFreeedit);
-        document.getElementById(name).insertAdjacentHTML('beforeend',buttonSumatory);
-        document.getElementById(name).insertAdjacentHTML('beforeend',buttonPercent)
-
-    }
-
-    static buttonsabilitate(name,abilitate) {
-        
-        document.getElementById(name).addEventListener('click' ,()=> {
-            console.log('bien');
-            document.getElementById(abilitate).disabled = false;
-        });
-
-    }
-
-    static buttonsumatories(name,num) {
-        document.getElementById(name).addEventListener('click', ()=> {
-            for (let index = 1; index <= num; index++) {
-                document.getElementById(`directcolumnforcalculusdirectcost${index}`).disabled = false;
-            }
-        },true)
-    }
-
-    
-}
 
 
 export class functionsButtons {
@@ -163,8 +107,7 @@ export class functionsButtons {
 
     static addmonthcolumn(month,num,rows1,rows2,rows3,rows4) {
         for (let i = 1; i <= 8; i++) {
-            document.getElementById(`table${i}totalhead`).insertAdjacentHTML("beforebegin",`<th id="monthheadtable${i}${num}
-            ">${month}</th>`);
+            document.getElementById(`table${i}totalhead`).insertAdjacentHTML("beforebegin",`<th id="monthheadtable${i}${num}">${month}</th>`);
             if (i < 9 && i>1) {
                 document.getElementById(`table${i}totalfile`).insertAdjacentHTML("beforeend",`<td id=totalpermonthtable${i}${num}><input disabled id="totalpermonthinputtable${i}${num}" value="0"></td>`)
             }
@@ -490,25 +433,58 @@ export class functionsButtons {
 
     
 
-    static saveEverythingandrun(rowsinEarnings,rowsindirectcost,rowsinadmincost,rowsinresources,columns) {
+    static async saveEverythingandrun(rowsinEarnings,rowsindirectcost,rowsinadmincost,rowsinresources,columns) {
         let chain = "'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         let code =""
         for(let i = 0; i<=5; i++ ) {
-            code+= chain[Math.floor(Math.random()*chain.length)]
+
+            code+= chain[Math.floor(Math.random()*chain.length)];
+
         }
+        let project = prompt('Ingrese un nombre');
+        while (project.length === 0) {
+            project = prompt('Ingrese un nombre');
+        }
+        
         let date = new Date();
         code += date.getFullYear().toString()+date.getMonth().toString()+date.getDate().toString()+date.getMinutes().toString()+date.getSeconds().toString()+date.getMilliseconds().toString();
-        console.log(code);
-        //console.log(code);
-        /*let earnings = [];
+        let budget = new Budget(code);
+        budget.id_presupuesto = code;
+        budget.proyecto = project;
+        let earnings = [];
         let directcost = [];
         let admincost = [];
         let resources = [];
-        for(let i = 0; i<=columns; i++) {
-            for(let j = 0; j<= rowsinEarnings, j++) {
-                let newbudget = 
+        for(let i = 1; i <= columns; i++) {
+
+            for(let j = 1; j <= rowsinEarnings; j++) {
+
+                let newearning = {id_presupuesto :code, concepto: document.getElementById(`conceptearningsinput${j}`).value,mes: document.getElementById(`monthheadtable2${i}`).innerHTML, total:Number.parseFloat( document.getElementById(`earningsinput${j}${i}`).value) };
+                earnings.push(newearning);
             }
-        }*/
+
+            for(let j = 1; j <= rowsindirectcost; j++) {
+                let newdirectcost = {id_presupuesto :code, concepto: document.getElementById(`conceptdirectcostinput${j}`).value,mes: document.getElementById(`monthheadtable3${i}`).innerHTML, total:Number.parseFloat( document.getElementById(`directcostinput${j}${i}`).value) };
+                directcost.push(newdirectcost);
+            }
+
+            for(let j = 1; j <= rowsinadmincost; j++) {
+
+                let newadmincost = {id_presupuesto :code, concepto: document.getElementById(`conceptadmincostinput${j}`).value,mes: document.getElementById(`monthheadtable4${i}`).innerHTML, total:Number.parseFloat( document.getElementById(`admincostinput${j}${i}`).value) };
+                admincost.push(newadmincost);
+
+            }
+
+            for(let j = 1; j <= rowsinresources; j++) {
+
+                let newresource = {id_presupuesto :code, concepto: document.getElementById(`resourcesconceptinput${j}`).value,mes: document.getElementById(`monthheadtable5${i}`).innerHTML, porcentaje:Number.parseFloat( document.getElementById(`resourcepercentinput${j}${i}`).value), costo: Number.parseFloat( document.getElementById(`resourcecostinput${j}${i}`).value)};
+                resources.push(newresource);
+
+            }
+
+        };
+        
+        await budget.addInfoBudget(budget,earnings,directcost,admincost,resources);
     }
     
 }

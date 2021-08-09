@@ -76,7 +76,7 @@ export class User {
 
     async startSession() {
         let result = await this.searchForUser();
-        console.log(result);
+        return result;
     }
 }
 

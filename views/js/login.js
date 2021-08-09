@@ -23,6 +23,7 @@ document.getElementById('registerButton').addEventListener('click', async () => 
                 alert(result);
             } else {
                 log(result);
+                
             }
         }else {
             alert('Las contraseñas no coinciden');
@@ -52,6 +53,7 @@ document.getElementById('startButton').addEventListener('click', async ()=> {
         } else {
 
             console.log(result);
+            window.open('../html/indexbudgin.html','_self');
         }
 
     }
