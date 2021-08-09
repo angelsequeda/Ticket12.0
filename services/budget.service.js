@@ -50,37 +50,36 @@ const deleteBudget = async(data) => {
 
 const addNewBudgetService = async(data) => {
 
+    try{
         let today = date().toDate();
-
-        await budgetModel.create({id_presupuesto:data.budget.id_presupuesto, proyecto:data.budget.proyecto,creado_en:today,version: 1, activo: 1 }).then(()=> {
-            if( data.earnings && data.earnings.length > 0 ) {
-                
-                data.earnings.forEach( async(element) => {
+        await budgetModel.create({id_presupuesto:data.budget.id_presupuesto, proyecto:data.budget.proyecto,creado_en:today,version: 1, activo: 1 })
+        if( data.earnings && data.earnings.length > 0 ) {
+            
+            data.earnings.forEach( async(element) => {
                 await earningModel.create(element);
-                    
-                })
-            };
+            })
+        };
 
-            if(data.directcost && data.directcost.length > 0) {
-                data.directcost.forEach( async(element) => {
-                    await directCostmodel.create(element);
-                })
-            };
+        if(data.directcost && data.directcost.length > 0) {
+            data.directcost.forEach( async(element) => {
+                await directCostmodel.create(element);
+            })
+        };
 
-            if(data.admincost && data.admincost.length > 0) {
-                data.admincost.forEach( async(element) => {
-                    await admCostmodel.create(element);
-                })
-            };
+        if(data.admincost && data.admincost.length > 0) {
+            data.admincost.forEach( async(element) => {
+                await admCostmodel.create(element);
+            })
+        };
 
-            if(data.resources && data.resources.length > 0) {
-                data.resources.forEach( async(element) => {
-                    await resourcesModel.create(element);
-                })
-            };
-
-        })
-    
+        if(data.resources && data.resources.length > 0) {
+            data.resources.forEach( async(element) => {
+                await resourcesModel.create(element);
+            })
+        };
+    }catch(error){
+        throw new Error('Ha habido un error de registro');
+    }
 
 }
 module.exports = {showBudgets,searchBudget,deleteBudget,addNewBudgetService};

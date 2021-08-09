@@ -8,12 +8,7 @@ earningModel.init( {
 
     id_presupuesto: {
         type: DataTypes.STRING,
-        allowNull: false,
-        references: {
-            model: budgetModel,
-            key: 'ID_PRESUPUESTO',
-            deferrable: Deferrable.INITIALLY_IMMEDIATE  
-        }
+        allowNull: false
     },
 
     concepto: {

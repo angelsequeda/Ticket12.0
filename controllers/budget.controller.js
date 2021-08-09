@@ -16,7 +16,7 @@ const showBudgetsinScreen = async (req,res) => {
 const searchForBudget = async(req,res) => {
     try {
 
-        let result =  await searchBudget(req.body.id_presupuesto);
+        let result =  await searchBudget(req.body.budget.id_presupuesto);
         return res.status(200).json(result);
 
     } catch (error) {
