@@ -488,6 +488,14 @@ export class functionsButtons {
         }
     }
 
+
+    static saveEverythingandrun(rowsinEarnings,rowsindirectcost,rowsinadmincost,rowsinresources) {
+        let earnings = [];
+        let directcost = [];
+        let admincost = [];
+        let resources = [];
+        for(let i=0; i<=rowsinEarnings; i++)
+    }
     
 }
 

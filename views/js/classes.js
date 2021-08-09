@@ -112,7 +112,7 @@ export class Budget {
 
     }
 
-    async addInfoBudget(earnings,directcost,admincost,resources) {
+    async addInfoBudget(budget, earnings,directcost,admincost,resources) {
 
         let result = await fetch("http://localhost:3000/budgets/addnew", {
             method: 'POST',
@@ -121,6 +121,7 @@ export class Budget {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify( {
+                budget: budget,
                 earnings: earnings,
                 directcost: directcost,
                 admincost: admincost,

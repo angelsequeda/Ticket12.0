@@ -1,4 +1,4 @@
-import { User } from './classes.js';
+import { Budget, User } from './classes.js';
 import {frontValidations} from './index.js';
 
 
@@ -90,3 +90,12 @@ document.getElementById('cancelButton').addEventListener('click', ()=> {
     document.getElementById('passwordChanger').value ="";
     document.getElementById('newpass_word').value ="";
 })
+
+/*let earnings = [{id_presupuesto: "1123a", concepto: "ganancia", mes: "marzo", total:125}]
+let directcost = [{id_presupuesto: "1123a", concepto: "ganancia", mes: "marzo", total:125}]
+let admincost = [{id_presupuesto: "1123a", concepto: "ganancia", mes: "marzo", total:125}]
+let resources = [{id_presupuesto: "1123a", concepto: "ganancia", mes: "marzo", costo:125,porcentaje:0.2}]
+let budget = {id_presupuesto:"1123a",proyecto:"algonuevo"}
+
+let budgetnew = new Budget(budget.id_presupuesto);
+budgetnew.addInfoBudget(budget,earnings,directcost,admincost,resources)*/
