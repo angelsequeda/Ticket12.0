@@ -112,4 +112,22 @@ export class Budget {
 
     }
 
+    async addInfoBudget(earnings,directcost,admincost,resources) {
+
+        let result = await fetch("http://localhost:3000/budgets/addnew", {
+            method: 'POST',
+            headers: {
+                "Accept": "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify( {
+                earnings: earnings,
+                directcost: directcost,
+                admincost: admincost,
+                resources: resources
+            })
+        });
+
+        return result.json();
+    }
 }

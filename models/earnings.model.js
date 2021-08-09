@@ -1,4 +1,4 @@
-let {Model,DataTypes} =require('sequelize');
+let {Model,DataTypes,Deferrable} =require('sequelize');
 const sequelize = require('../db/connection');
 const { budgetModel } = require('./budget.model');
 
@@ -40,3 +40,5 @@ earningModel.init( {
     createdAt: false,
     updatedAt: false
 })
+
+module.exports = earningModel;

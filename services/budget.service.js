@@ -1,6 +1,13 @@
+const { Sequelize } = require("sequelize");
+const sequelize = require("../db/connection");
+
 const {budgetModel} = require('../models/budget.model');
+const earningModel = require('../models/earnings.model');
 
-
+let date = require('moment');
+const directCostmodel = require("../models/directcost.model");
+const admCostmodel = require("../models/admcost.model");
+const resourcesModel = require("../models/resources.model");
 
 const showBudgets = async ()=> {
 
@@ -40,17 +47,47 @@ const deleteBudget = async(data) => {
 }
 
 
-const addNewBudget = async(data) => {
+const addNewBudgetService = async(data) => {
 
-    let budget = data.budget;
-    let earnings = data.earnings;
-    let directcost = data.directcost;
-    let admincost = data.admincost;
-    let resources = data.resources;
+    try {
+        let today = date().toDate();
+        await budgetModel.create({id_presupuesto:data.budget.id_presupuesto, proyecto:data.budget.proyecto,creado_en:today,version: 1, activo: 1 }).then(()=> {
+            if( data.earnings && data.earnings.length > 0 ) {
+                
+                data.earnings.forEach( async(element) => {
+                await earningModel.create(element);
+                    
+                })
+            };
 
-    data.earnings.foreach(async (element) => {
-        earningModel.create()
-    })
+            if(data.directcost && data.directcost.length > 0) {
+                data.directcost.forEach( async(element) => {
+                    await directCostmodel.create(element);
+                })
+            };
+
+            if(data.admincost && data.admincost.length > 0) {
+                data.admincost.forEach( async(element) => {
+                    await admCostmodel.create(element);
+                })
+            };
+
+            if(data.resources && data.resources.length > 0) {
+                data.resources.forEach( async(element) => {
+                    await resourcesModel.create(element);
+                })
+            };
+
+        })
+    } catch (error) {
+        console.log(error.message);
+        throw new Error('Error al agregar registro [SERVICE]')
+    }
+    
+
+    
+
+    
 
 }
-module.exports = {showBudgets,searchBudget,deleteBudget};
+module.exports = {showBudgets,searchBudget,deleteBudget,addNewBudgetService};
