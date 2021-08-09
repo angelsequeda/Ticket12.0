@@ -213,7 +213,7 @@ export class functionsButtons {
     }
 
     static addrowearnings(rows,columns) {
-        document.getElementById(`table2totalfile`).insertAdjacentHTML("beforebegin",`<tr id="earningrow${rows}"><td id="conceptearnings${rows}"><input id="conceptearningsinput${rows}" type="text" ></td><td id="totalearningsperconcept${rows}"><input type="text" id="totalearningsperconceptinput${rows}" disabled value="0" ></td><td><button type="button" class="btn btn-danger" id="buttondeleteearning${rows}">Borrar</button></td></tr>`);
+        document.getElementById(`table2totalfile`).insertAdjacentHTML("beforebegin",`<tr id="earningrow${rows}"><td id="conceptearnings${rows}"><input id="conceptearningsinput${rows}" type="text" ></td><td id="totalearningsperconcept${rows}"><input type="text" id="totalearningsperconceptinput${rows}" disabled value="0" ></td></tr>`);
         
         for (let index = 1; index <= columns; index++) {
             document.getElementById(`totalearningsperconcept${rows}`).insertAdjacentHTML("beforebegin",`<td id="earnings${rows}${index}"><input type="text" id="earningsinput${rows}${index}" value="0" placeholder="Total del mes" ></td>`);
@@ -224,7 +224,7 @@ export class functionsButtons {
     }
 
     static addrowdirectcost(rows,columns) {
-        document.getElementById(`table3totalfile`).insertAdjacentHTML("beforebegin",`<tr id="direccostrow${rows}"><td id="conceptdirectcost${rows}"><input id="conceptdirectcostinput${rows}" type="text" ></td><td id="totaldirectcostperconcept${rows}"><input type="text" id="totaldirectcostperconceptinput${rows}" disabled value="0"></td><td><button type="button" class="btn btn-danger" id="buttondeletedirectcost${rows}">Borrar</button></td></tr>`);
+        document.getElementById(`table3totalfile`).insertAdjacentHTML("beforebegin",`<tr id="direccostrow${rows}"><td id="conceptdirectcost${rows}"><input id="conceptdirectcostinput${rows}" type="text" ></td><td id="totaldirectcostperconcept${rows}"><input type="text" id="totaldirectcostperconceptinput${rows}" disabled value="0"></td></tr>`);
         
         for (let index = 1; index <= columns; index++) {
             document.getElementById(`totaldirectcostperconcept${rows}`).insertAdjacentHTML("beforebegin",`<td id="directcost${rows}${index}"><input type="text" id="directcostinput${rows}${index}" value="0" placeholder="Total del mes"></td>`);
@@ -233,7 +233,7 @@ export class functionsButtons {
     }
 
     static addrowsadmincost(rows,columns) {
-        document.getElementById(`table4totalfile`).insertAdjacentHTML("beforebegin",`<tr id="admincostrow${rows}"><td id="conceptadmincost${rows}"><input id="conceptadmincostinput${rows}" type="text" ></td><td id="totaladmincostperconcept${rows}"><input type="text" id="totaladmincostperconceptinput${rows}" disabled value="0"></td><td><button type="button" class="btn btn-danger" id="buttondeleteadmincost${rows}">Borrar</button></td></tr>`);
+        document.getElementById(`table4totalfile`).insertAdjacentHTML("beforebegin",`<tr id="admincostrow${rows}"><td id="conceptadmincost${rows}"><input id="conceptadmincostinput${rows}" type="text" ></td><td id="totaladmincostperconcept${rows}"><input type="text" id="totaladmincostperconceptinput${rows}" disabled value="0"></td></tr>`);
         
         for (let index = 1; index <= columns; index++) {
             document.getElementById(`totaladmincostperconcept${rows}`).insertAdjacentHTML("beforebegin",`<td id="admincost${rows}${index}"><input type="text" id="admincostinput${rows}${index}" value="0" placeholder="Total del mes"></td>`);
@@ -242,7 +242,7 @@ export class functionsButtons {
     }
 
     static addrowsresources(rows,columns) {
-        document.getElementById(`table5totalfile`).insertAdjacentHTML("beforebegin",`<tr id="resourcesrow${rows}"><td id="resourcesconcept${rows}"><input id="resourcesconceptinput${rows}" type="text" ></td><td id="totalresourceperconcept${rows}"><input type="text" id="totalresourceperconcepttinput${rows}" disabled value="0"></td><td><button type="button" class="btn btn-danger" id="buttondeleteresource${rows}">Borrar</button></td></tr>`);
+        document.getElementById(`table5totalfile`).insertAdjacentHTML("beforebegin",`<tr id="resourcesrow${rows}"><td id="resourcesconcept${rows}"><input id="resourcesconceptinput${rows}" type="text" ></td><td id="totalresourceperconcept${rows}"><input type="text" id="totalresourceperconcepttinput${rows}" disabled value="0"></td></tr>`);
         document.getElementById(`table6totalfile`).insertAdjacentHTML("beforebegin",`<tr id="resourcecostrow${rows}"><td id="resoucecostconcept${rows}"><input disabled id="resoucecostconceptinput${rows}" type="text"></td><td id="totalresourcecostperconcept${rows}"><input value="0" type="text" id="totalresourcecostperconceptinput${rows}" disabled></td></tr>`);
         document.getElementById(`table7totalfile`).insertAdjacentHTML("beforebegin",`<tr id="resoucebalancerow${rows}"><td id="resoucebalanceconcept${rows}"><input disabled id="resoucebalanceconceptinput${rows}" type="text"></td><td id="totalresourcebalanceperconcept${rows}"><input type="text" id="totalresourcebalanceperconceptinput${rows}" disabled value="0"></td></tr>`);
 
@@ -256,7 +256,6 @@ export class functionsButtons {
 
     static buttonsacceptearnings(rows,columns) {
         
-     
         for( let j=1; j<=rows; j++) {
             let sumvertical = 0;
 
@@ -287,7 +286,7 @@ export class functionsButtons {
         document.getElementById(`totalearningstable1input`).value = sumtotal;
         this.actualtotalCashflow(columns);
     }
-
+    
     static deleteearningrow(rows,columns) {
         for( let i=1; i<=columns; i++) {
             document.getElementById(`totalearningspermonthtable1${i}`).value = Number.parseFloat(document.getElementById(`totalearningspermonthtable1${i}`).value)-Number.parseFloat(document.getElementById(`earningsinput${rows}${i}`).value)

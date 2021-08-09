@@ -23,11 +23,15 @@ document.getElementById('monthselect').addEventListener('change',()=> {
             
         }
     }
+    
     document.getElementById("readytable2").hidden = false;
     document.getElementById("readytable3").hidden = false;
     document.getElementById("table9body").hidden = false;
     document.getElementById("readytable4").hidden = false;
     document.getElementById("readytable5").hidden = false;
+    document.getElementById("deletetable2").hidden = false;
+    document.getElementById("deletetable3").hidden = false;
+    document.getElementById("deletetable4").hidden = false;
 
     num+= 1
     functionsButtons.addmonthcolumn(document.getElementById("monthselect").value,num,0,0,0,0);
@@ -66,40 +70,44 @@ document.getElementById(`addcolumntable1`).addEventListener('click', ()=> {
 document.getElementById("addrowtable2").addEventListener('click', ()=> {
 
     rowsinEarnings += 1;
+    
     functionsButtons.addrowearnings(rowsinEarnings,num);
-    document.getElementById(`buttondeleteearning${rowsinEarnings}`).addEventListener('click',()=> {
-        functionsButtons.deleteearningrow(rowsinEarnings,num);
-        rowsinEarnings-=1;
-        
-    })
+});
 
+document.getElementById(`deletetable2`).addEventListener('click',()=> {
+    functionsButtons.deleteearningrow(rowsinEarnings,num);
+    rowsinEarnings-=1;
+    
 })
 
 document.getElementById("addrowtable3").addEventListener("click", ()=> {
 
     rowsinDirectcost+=1;
     functionsButtons.addrowdirectcost(rowsinDirectcost,num);
-    document.getElementById(`buttondeletedirectcost${rowsinDirectcost}`).addEventListener('click',()=> {
-        functionsButtons.deletedirectcostrow(rowsinDirectcost,num);
-        rowsinDirectcost-=1;
-        
-    })
+    
     
 })
+
+document.getElementById(`deletetable3`).addEventListener('click',()=> {
+    functionsButtons.deletedirectcostrow(rowsinDirectcost,num);
+    rowsinDirectcost-=1;
+    
+})
+
 
 document.getElementById("addrowtable4").addEventListener("click", ()=> {
     
     rowsinAdmincost += 1;
     functionsButtons.addrowsadmincost(rowsinAdmincost,num);
-    document.getElementById(`buttondeleteadmincost${rowsinAdmincost}`).addEventListener('click',()=> {
-        
-        functionsButtons.deleteadmincostrow(rowsinAdmincost,num);
-        rowsinAdmincost-=1;
-        
-    })
+    
 })
 
-
+document.getElementById(`deletetable4`).addEventListener('click',()=> {
+        
+    functionsButtons.deleteadmincostrow(rowsinAdmincost,num);
+    rowsinAdmincost-=1;
+    
+})
 document.getElementById("addrowtable5").addEventListener("click", ()=> {
 
     rowsinresources +=1 ;

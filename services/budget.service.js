@@ -1,4 +1,6 @@
-const {budgetModel} = require('../models/budget.model')
+const {budgetModel} = require('../models/budget.model');
+
+
 
 const showBudgets = async ()=> {
 
@@ -35,5 +37,20 @@ const deleteBudget = async(data) => {
         console.log(error.message);
         throw new Error('Error al eliminar [SERVICE]');
     }
+}
+
+
+const addNewBudget = async(data) => {
+
+    let budget = data.budget;
+    let earnings = data.earnings;
+    let directcost = data.directcost;
+    let admincost = data.admincost;
+    let resources = data.resources;
+
+    data.earnings.foreach(async (element) => {
+        earningModel.create()
+    })
+
 }
 module.exports = {showBudgets,searchBudget,deleteBudget};
