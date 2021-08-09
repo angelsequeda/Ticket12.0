@@ -488,13 +488,25 @@ export class functionsButtons {
         }
     }
 
+    
 
-    static saveEverythingandrun(rowsinEarnings,rowsindirectcost,rowsinadmincost,rowsinresources) {
-        let earnings = [];
+    static saveEverythingandrun(rowsinEarnings,rowsindirectcost,rowsinadmincost,rowsinresources,columns) {
+        let chain = "'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        let code =""
+        for(let i = 0; i<=5; ) {
+            code+= chain[Math.floor(Math.random()*chain.length)]
+        }
+        let date = new Date();
+        console.log(date,code);
+        /*let earnings = [];
         let directcost = [];
         let admincost = [];
         let resources = [];
-        for(let i=0; i<=rowsinEarnings; i++)
+        for(let i = 0; i<=columns; i++) {
+            for(let j = 0; j<= rowsinEarnings, j++) {
+                let newbudget = 
+            }
+        }*/
     }
     
 }

@@ -131,3 +131,10 @@ document.getElementById("readytable4").addEventListener('click', ()=> {
 document.getElementById(`readytable5`).addEventListener('click', ()=> {
     functionsButtons.buttonacceptresources(rowsinresources,num)
 })
+
+document.getElementById("buttonfinalsave").addEventListener('click',()=> {
+    let r = window.confirm('¿Estas seguro de que tus datos son correctos?');
+    if(r ) {
+        functionsButtons.saveEverythingandrun(rowsinEarnings,rowsinDirectcost,rowsinAdmincost,rowsinresources,num);
+    }
+})
