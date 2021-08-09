@@ -32,6 +32,8 @@ document.getElementById('monthselect').addEventListener('change',()=> {
     document.getElementById("deletetable2").hidden = false;
     document.getElementById("deletetable3").hidden = false;
     document.getElementById("deletetable4").hidden = false;
+    document.getElementById("buttonfinalsave").hidden = false;
+    document.getElementById("buttonfinalcancel").hidden = false;
 
     num+= 1
     functionsButtons.addmonthcolumn(document.getElementById("monthselect").value,num,0,0,0,0);
@@ -132,11 +134,30 @@ document.getElementById(`readytable5`).addEventListener('click', ()=> {
     functionsButtons.buttonacceptresources(rowsinresources,num)
 })
 
-document.getElementById("buttonfinalsave").addEventListener('click',()=> {
+document.getElementById("buttonfinalsave").addEventListener('click',async ()=> {
     let r = window.confirm('¿Estas seguro de que tus datos son correctos?');
-    if(r ) {
+    if(r) {
+
         console.log('bien');
-        functionsButtons.saveEverythingandrun(rowsinEarnings,rowsinDirectcost,rowsinAdmincost,rowsinresources,num);
+        if (rowsinDirectcost === 0 || rowsinAdmincost === 0 || rowsinresources === 0 || rowsinEarnings) {
+
+            r = window.confirm('¿Seguro que desea guardar sin registrar alguno de los siguientes datos: \n Ingresos \n Costos directos \n Gastos administrativos \n Recursos?')
+
+            if(r) {
+
+                let result = await functionsButtons.saveEverythingandrun(rowsinEarnings,rowsinDirectcost,rowsinAdmincost,rowsinresources,num);
+                alert(result);
+                
+            } 
+            
+        } else {
+
+            let result = await functionsButtons.saveEverythingandrun(rowsinEarnings,rowsinDirectcost,rowsinAdmincost,rowsinresources,num);
+            alert(result);
+            window.open("../html/indexbudgin.html",'_self');
+
+        }
+        
     }
 })
 

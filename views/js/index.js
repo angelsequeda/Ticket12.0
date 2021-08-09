@@ -484,7 +484,8 @@ export class functionsButtons {
 
         };
         
-        await budget.addInfoBudget(budget,earnings,directcost,admincost,resources);
+        let result = await budget.addInfoBudget(budget,earnings,directcost,admincost,resources);
+        return result;
     }
     
 }
