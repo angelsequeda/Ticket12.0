@@ -493,11 +493,13 @@ export class functionsButtons {
     static saveEverythingandrun(rowsinEarnings,rowsindirectcost,rowsinadmincost,rowsinresources,columns) {
         let chain = "'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         let code =""
-        for(let i = 0; i<=5; ) {
+        for(let i = 0; i<=5; i++ ) {
             code+= chain[Math.floor(Math.random()*chain.length)]
         }
         let date = new Date();
-        console.log(date,code);
+        code += date.getFullYear().toString()+date.getMonth().toString()+date.getDate().toString()+date.getMinutes().toString()+date.getSeconds().toString()+date.getMilliseconds().toString();
+        console.log(code);
+        //console.log(code);
         /*let earnings = [];
         let directcost = [];
         let admincost = [];

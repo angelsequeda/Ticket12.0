@@ -135,6 +135,7 @@ document.getElementById(`readytable5`).addEventListener('click', ()=> {
 document.getElementById("buttonfinalsave").addEventListener('click',()=> {
     let r = window.confirm('¿Estas seguro de que tus datos son correctos?');
     if(r ) {
+        console.log('bien');
         functionsButtons.saveEverythingandrun(rowsinEarnings,rowsinDirectcost,rowsinAdmincost,rowsinresources,num);
     }
 })
