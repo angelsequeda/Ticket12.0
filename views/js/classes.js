@@ -56,7 +56,7 @@ export class User {
         return resultJSON;
     }
 
-    async changePassword() {
+    async changePassword(newpass) {
         let result = await fetch('http://localhost:3000/users/changepass', {
             method: 'POST',
             headers: {
@@ -67,7 +67,7 @@ export class User {
 
                 username: this.username,
                 pass_word: this.pass_word,
-                newpass_word : this.newpass_word
+                newpass_word : newpass
             })
         })
         let resultjson = result.json();
@@ -76,10 +76,59 @@ export class User {
 
     async startSession() {
         let result = await this.searchForUser();
-        console.log(result);
+        return result;
     }
 }
 
 
 
 
+export class Budget {
+    constructor(data){
+        this.id = data.id
+    }
+
+    static async searchAllBudgets() {
+
+        let result =  await fetch("http://localhost:3000/budgets/consult", {
+            method: 'GET',
+        });
+        return result.json();
+
+    }
+    async searchForBudget() {
+
+        let result =  await fetch("http://localhost:3000/budgets/consultone", {
+            method: 'POST',
+            headers: {
+                "Accept": "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id_presupuesto: this.id
+            })
+        });
+        return result.json();
+
+    }
+
+    async addInfoBudget(budget, earnings,directcost,admincost,resources) {
+
+        let result = await fetch("http://localhost:3000/budgets/addnew", {
+            method: 'POST',
+            headers: {
+                "Accept": "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify( {
+                budget: budget,
+                earnings: earnings,
+                directcost: directcost,
+                admincost: admincost,
+                resources: resources
+            })
+        });
+
+        return result.json();
+    }
+}
