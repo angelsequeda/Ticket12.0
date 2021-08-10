@@ -39,7 +39,15 @@ const searchBudget = async(data) => {
 
 const deleteBudget = async(data) => {
     try {
-        let result = await budgetModel.update({activo:0},{where: {id_presupuesto:data}});
+        await budgetModel.update({activo:0},{where: {id_presupuesto:data}}).then(()=> {
+            earningModel.destroy({where: {id_presupuesto : data}}).then(()=> {
+                directCostmodel.destroy({where: {id_presupuesto : data}}).then(()=> {
+                    admCostmodel.destroy({where: {id_presupuesto : data}}).then(()=> {
+                        resourcesModel.destroy({where: {id_presupuesto : data}});
+                    })
+                })
+            })
+        })
     } catch (error) {
         console.log(error.message);
         throw new Error('Error al eliminar [SERVICE]');
@@ -82,4 +90,4 @@ const addNewBudgetService = async(data) => {
     }
 
 }
-module.exports = {showBudgets,searchBudget,deleteBudget,addNewBudgetService};
+module.exports = {showBudgets,searchBudget,deleteBudget,addNewBudgetService,deleteBudget};

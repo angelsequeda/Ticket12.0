@@ -18,7 +18,7 @@ let userSchemaJoiForRegister = new Joi.object( {
 let userSchemaForLogin = Joi.object({
 
     username: Joi.string().alphanum().min(5).max(50).required(),
-    pass_word: Joi.string().alphanum().min(6).max(15).required()
+    pass_word:  Joi.string().pattern(new RegExp("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,15}$")).message('La contraseña debe contener al menos una mayúscula, una minúscula y un dígito')
 
 });
 

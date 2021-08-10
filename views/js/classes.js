@@ -78,6 +78,7 @@ export class User {
         let result = await this.searchForUser();
         return result;
     }
+
 }
 
 
@@ -129,6 +130,21 @@ export class Budget {
             })
         });
 
+        return result.json();
+    }
+
+    async deleteBudget() {
+        let result =  await fetch("http://localhost:3000/budgets/delete",{
+            method:'POST',
+            headers: {
+                "Accept": "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id_presupuesto: this.id
+            })
+        });
+        
         return result.json();
     }
 }

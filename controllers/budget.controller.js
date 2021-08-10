@@ -1,4 +1,4 @@
-const { showBudgets, searchBudget, editBudget, addNewBudgetService } = require("../services/budget.service");
+const { showBudgets, searchBudget, editBudget, addNewBudgetService, deleteBudget } = require("../services/budget.service");
 
 const showBudgetsinScreen = async (req,res) => {
 
@@ -25,15 +25,23 @@ const searchForBudget = async(req,res) => {
     }
 }
 
-const addNewBudget =  (req,res) => {
+const addNewBudget = async (req,res) => {
     
     try {
-        addNewBudgetService(req.body);
+        await addNewBudgetService(req.body);
         return res.status(200).json('Registro realizado con exito');
     } catch (error) {
         return res.status(400).json(error.message);
     }
 }
 
+const eraseBudget = async (req,res) => {
+    try {
+        await deleteBudget(req.id_presupuesto);
+        return res.status(200).json('Presupuesto eliminado');
+    } catch (error) {
+        return res.status(400).json(error.message);
+    }
+}
 
-module.exports = {showBudgetsinScreen,searchForBudget,addNewBudget}
+module.exports = {showBudgetsinScreen,searchForBudget,addNewBudget,eraseBudget}

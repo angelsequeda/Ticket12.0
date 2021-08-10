@@ -1,4 +1,4 @@
-const { showBudgetsinScreen, searchForBudget, addNewBudget } = require("../controllers/budget.controller");
+const { showBudgetsinScreen, searchForBudget, addNewBudget, eraseBudget } = require("../controllers/budget.controller");
 
 const budgetRoutes = (app) => {
 
@@ -7,6 +7,8 @@ const budgetRoutes = (app) => {
     app.post('/budgets/consultone',searchForBudget);
 
     app.post("/budgets/addnew",addNewBudget);
+
+    app.post("/budgets/delete",eraseBudget)
 }
 
 module.exports = {budgetRoutes};

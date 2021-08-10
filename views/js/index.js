@@ -71,6 +71,9 @@ export class Renderizer {
             newcolumn2.innerHTML = `<button class ='btn btn-info' id='${element1.id_presupuesto}edit'>Editar</button>`;
             let newcolumn3 = document.createElement('td');
             newcolumn3.innerHTML = `<button class ='btn btn-danger' id='${element1.id_presupuesto}delete'>Eliminar</button>`
+            document.getElementById(`${element.id_presupuesto}delete`).addEventListener('click', ()=> {
+                
+            }) 
             file.appendChild(newcolumn1);
             file.appendChild(newcolumn2);
             file.appendChild(newcolumn3);
