@@ -37,7 +37,7 @@ const addNewBudget = async (req,res) => {
 
 const eraseBudget = async (req,res) => {
     try {
-        await deleteBudget(req.id_presupuesto);
+        await deleteBudget(req.body.id_presupuesto);
         return res.status(200).json('Presupuesto eliminado');
     } catch (error) {
         return res.status(400).json(error.message);

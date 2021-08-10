@@ -70,14 +70,17 @@ export class Renderizer {
             let newcolumn2 = document.createElement('td');
             newcolumn2.innerHTML = `<button class ='btn btn-info' id='${element1.id_presupuesto}edit'>Editar</button>`;
             let newcolumn3 = document.createElement('td');
-            newcolumn3.innerHTML = `<button class ='btn btn-danger' id='${element1.id_presupuesto}delete'>Eliminar</button>`
-            document.getElementById(`${element.id_presupuesto}delete`).addEventListener('click', ()=> {
-                
-            }) 
+            newcolumn3.innerHTML = `<button class ='btn btn-danger' id='${element1.id_presupuesto}delete'>Eliminar</button>` 
             file.appendChild(newcolumn1);
             file.appendChild(newcolumn2);
             file.appendChild(newcolumn3);
             table.appendChild(file);
+            document.getElementById(`${element1.id_presupuesto}delete`).addEventListener('click',async ()=> {
+                let budget = new Budget({id: element1.id_presupuesto});
+                let result = await budget.deleteBudget();
+                alert(result);
+                window.open("../html/indexbudgin.html","_self");
+            })
 
         });
     }
