@@ -53,5 +53,5 @@ userModel.init({
     updatedAt: false
 })
 
-
+userModel.sync();
 module.exports = userModel;

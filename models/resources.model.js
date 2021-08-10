@@ -39,6 +39,8 @@ resourcesModel.init( {
     timestamps: false,
     createdAt: false,
     updatedAt: false
-})
+});
+
+resourcesModel.sync();
 
 module.exports = resourcesModel;

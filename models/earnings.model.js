@@ -34,6 +34,8 @@ earningModel.init( {
     timestamps: false,
     createdAt: false,
     updatedAt: false
-})
+});
+
+earningModel.sync();
 
 module.exports = earningModel;

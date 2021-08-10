@@ -34,6 +34,8 @@ directCostmodel.init( {
     timestamps: false,
     createdAt: false,
     updatedAt: false
-})
+});
+
+directCostmodel.sync();
 
 module.exports = directCostmodel;

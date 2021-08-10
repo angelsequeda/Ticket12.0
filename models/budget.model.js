@@ -40,4 +40,6 @@ budgetModel.init( {
     updatedAt: false
 })
 
+budgetModel.sync();
+
 module.exports = {budgetModel}

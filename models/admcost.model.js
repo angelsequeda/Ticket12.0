@@ -35,6 +35,8 @@ admCostmodel.init( {
     timestamps: false,
     createdAt: false,
     updatedAt: false
-})
+});
+
+admCostmodel.sync();
 
 module.exports = admCostmodel;
